@@ -5,7 +5,6 @@ class Input extends StatelessWidget {
     super.key,
     this.controller,
     this.onChanged,
-    this.label = "Label",
     this.placeholder = "Placeholder text",
     this.autofocus = false,
     this.focusNode,
@@ -16,7 +15,6 @@ class Input extends StatelessWidget {
 
   final TextEditingController? controller;
   final void Function(String)? onChanged;
-  final String? label;
   final String? placeholder;
   final bool? autofocus;
   final FocusNode? focusNode;
@@ -28,9 +26,8 @@ class Input extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       onChanged: onChanged,
-      style: TextStyle(color: Theme.of(context).primaryColor),
+      style: Theme.of(context).textTheme.bodySmall,
       decoration: InputDecoration(
-        labelText: label,
         floatingLabelBehavior: FloatingLabelBehavior.always,
         hintText: placeholder,
         suffixIconConstraints: const BoxConstraints(maxWidth: 50, minWidth: 20),
