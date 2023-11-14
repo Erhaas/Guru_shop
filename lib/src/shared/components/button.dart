@@ -26,9 +26,9 @@ class Button extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ButtonStyle(
-          elevation: MaterialStateProperty.all(1.0),
+          // elevation: MaterialStateProperty.all(1.0),
           padding: MaterialStateProperty.all<EdgeInsets>(
-              const EdgeInsets.fromLTRB(12, 16, 12, 16)),
+              const EdgeInsets.symmetric(vertical: 18, horizontal: 12)),
           backgroundColor: MaterialStateProperty.all<Color>(
               bgColor ?? Theme.of(context).colorScheme.surface),
           textStyle: MaterialStateProperty.all<TextStyle>(textStyle ??
@@ -37,27 +37,29 @@ class Button extends StatelessWidget {
               RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(raduis),
                   side: BorderSide(
-                      width: bgColor == null ? 1 : 0.4,
-                      color: Theme.of(context).colorScheme.secondary)))),
+                      width: bgColor != null ? 0 : 0.2,
+                      color: bgColor != null
+                          ? Colors.transparent
+                          : Theme.of(context).colorScheme.secondary)))),
       onPressed: onPressed,
       child: SizedBox(
         child: Stack(
           children: [
-            if (prefix != null)
-              Positioned(
-                right: 0,
-                child: prefix!,
-              )
-            else
-              const Expanded(flex: 0, child: SizedBox()),
-            Container(
-              color: primaryBlue,
+            SizedBox(
+              width: double.maxFinite,
               child: Text(
                 text,
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: textSize, color: color),
               ),
             ),
+            if (prefix != null)
+              Positioned(
+                left: 0,
+                child: prefix!,
+              )
+            else
+              const SizedBox(),
           ],
         ),
       ),

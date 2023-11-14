@@ -51,7 +51,7 @@ ThemeData lightThemeCustom() {
               textStyle: MaterialStateProperty.all<TextStyle>(
                   const TextStyle(color: whiteColor)))),
       inputDecorationTheme: const InputDecorationTheme(
-          contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
+          contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 15),
           fillColor: whiteColor,
           prefixIconColor: neuralGrey,
           suffixIconColor: neuralGrey,

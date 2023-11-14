@@ -25,14 +25,22 @@ class Input extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      focusNode: focusNode,
       onChanged: onChanged,
       style: Theme.of(context).textTheme.bodySmall,
       decoration: InputDecoration(
         floatingLabelBehavior: FloatingLabelBehavior.always,
         hintText: placeholder,
         suffixIconConstraints: const BoxConstraints(maxWidth: 50, minWidth: 20),
-        prefixIcon: prefixe,
-        suffixIcon: suffixe,
+        prefixIconConstraints: const BoxConstraints(maxWidth: 50, minWidth: 20),
+        prefixIcon: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: prefixe,
+        ),
+        suffixIcon: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: suffixe,
+        ),
       ),
       validator: validator,
     );
