@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:guru_shop/gen/assets.gen.dart';
-import 'package:guru_shop/src/core/routes/app_router.dart';
+import 'package:guru_shop/src/core/routes/router.dart';
 import 'package:guru_shop/src/core/viewmodels/login_viewmodel.dart';
 import 'package:guru_shop/src/features/baseview.dart';
 import 'package:guru_shop/src/shared/components/button.dart';
@@ -77,6 +77,8 @@ class RegisterScreen extends StatelessWidget {
                             text: "Sign Up",
                             bgColor: Theme.of(context).colorScheme.primary,
                             color: Theme.of(context).colorScheme.surface,
+                            onPressed: () =>
+                                {router.push(const BottomNavRouteWrapper())},
                           ),
                         ),
                         const Padding(

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:guru_shop/src/core/routes/app_router.dart';
+import 'package:guru_shop/src/core/routes/router.dart';
 import 'package:guru_shop/src/shared/utils/theme/themes.dart';
 import 'package:provider/provider.dart';
 
