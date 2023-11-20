@@ -8,8 +8,8 @@ import 'package:guru_shop/src/shared/components/button.dart';
 import 'package:guru_shop/src/shared/components/input.dart';
 
 @RoutePage()
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+class RegisterScreen extends StatelessWidget {
+  const RegisterScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,16 +29,23 @@ class LoginScreen extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.only(top: 16),
                           child: Text(
-                            'Welcome to Guru Shop',
+                            'Let’s Get Started',
                             style: Theme.of(context).textTheme.titleMedium,
                           ),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(top: 8, bottom: 28),
                           child: Text(
-                            'Sign in to continue',
+                            'Create an new account',
                             style: Theme.of(context).textTheme.bodySmall,
                           ),
+                        ),
+                        const Input(
+                          prefixe: Icon(Icons.mail_outlined),
+                          placeholder: 'Full Name',
+                        ),
+                        const SizedBox(
+                          height: 8,
                         ),
                         const Input(
                           prefixe: Icon(Icons.mail_outlined),
@@ -53,61 +60,39 @@ class LoginScreen extends StatelessWidget {
                             Icons.lock_outlined,
                           ),
                         ),
+                        const SizedBox(
+                          height: 8,
+                        ),
+                        const Input(
+                          placeholder: 'Password Again',
+                          prefixe: Icon(
+                            Icons.lock_outlined,
+                          ),
+                        ),
                         const Padding(
                             padding: EdgeInsets.symmetric(vertical: 16.0)),
                         SizedBox(
                           width: double.infinity,
                           child: Button(
-                            text: "Sign In",
+                            text: "Sign Up",
                             bgColor: Theme.of(context).colorScheme.primary,
                             color: Theme.of(context).colorScheme.surface,
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 16.0),
-                          child: Text(
-                            "OR",
-                            style: Theme.of(context).textTheme.bodyLarge,
-                          ),
-                        ),
-                        SizedBox(
-                          width: double.infinity,
-                          child: Button(
-                            textStyle: Theme.of(context).textTheme.bodyLarge,
-                            prefix: Assets.icons.googleIcon.svg(),
-                            text: "Login with Google",
                           ),
                         ),
                         const Padding(
                           padding: EdgeInsets.symmetric(vertical: 4.0),
                         ),
-                        SizedBox(
-                          width: double.infinity,
-                          child: Button(
-                            textStyle: Theme.of(context).textTheme.bodyLarge,
-                            prefix: Assets.icons.facebookIcon.svg(),
-                            text: "Login with Facebook",
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 16.0),
-                          child: Text(
-                            'Forgot Password?',
-                            style: TextStyle(
-                                color: Theme.of(context).colorScheme.primary),
-                          ),
-                        ),
                         Padding(
                             padding: const EdgeInsets.symmetric(vertical: 4.0),
                             child: GestureDetector(
-                              onTap: () => {router.push(const RegisterRoute())},
+                              onTap: () => {router.push(const LoginRoute())},
                               child: RichText(
                                 text: TextSpan(
-                                  text: "Don't have a account? ",
+                                  text: "have a account? ",
                                   style: Theme.of(context).textTheme.bodyMedium,
                                   children: <TextSpan>[
                                     TextSpan(
-                                        text: 'Register',
+                                        text: 'Sign In',
                                         style: TextStyle(
                                             color: Theme.of(context)
                                                 .colorScheme
