@@ -10,12 +10,21 @@ ThemeData lightThemeCustom() {
           secondary: neuralGrey,
           surface: whiteColor,
           background: whiteColor),
-      appBarTheme: const AppBarTheme(backgroundColor: whiteColor),
+      appBarTheme: const AppBarTheme(
+          backgroundColor: whiteColor,
+          toolbarHeight: 80,
+          elevation: 1,
+          actionsIconTheme: IconThemeData(color: neuralGrey)),
       textTheme: const TextTheme(
           displayLarge: TextStyle(
-              color: neuralDark,
+              color: whiteColor,
               fontFamily: FontFamily.poppins,
-              fontSize: 20,
+              fontSize: 24,
+              fontWeight: FontWeight.bold),
+          displayMedium: TextStyle(
+              color: primaryBlue,
+              fontFamily: FontFamily.poppins,
+              fontSize: 14,
               fontWeight: FontWeight.bold),
           titleLarge: TextStyle(
               color: neuralDark,

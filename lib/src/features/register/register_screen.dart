@@ -41,7 +41,7 @@ class RegisterScreen extends StatelessWidget {
                           ),
                         ),
                         const Input(
-                          prefixe: Icon(Icons.mail_outlined),
+                          prefixe: Icon(Icons.person_outline),
                           placeholder: 'Full Name',
                         ),
                         const SizedBox(

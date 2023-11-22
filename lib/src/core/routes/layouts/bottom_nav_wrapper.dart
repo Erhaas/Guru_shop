@@ -18,8 +18,9 @@ class BottomNavScreenWrapper extends StatelessWidget {
             currentIndex: tabsRouter.activeIndex,
             onTap: tabsRouter.setActiveIndex,
             items: const [
-              BottomNavigationBarItem(label: '', icon: Icon(Icons.home)),
-              BottomNavigationBarItem(label: '', icon: Icon(Icons.search)),
+              BottomNavigationBarItem(label: 'Home', icon: Icon(Icons.home)),
+              BottomNavigationBarItem(
+                  label: 'Explore', icon: Icon(Icons.search)),
             ],
           );
         });

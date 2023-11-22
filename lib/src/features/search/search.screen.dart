@@ -11,6 +11,11 @@ class SearchScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BaseView<LoginViewModel>(
         builder: (BuildContext context, LoginViewModel model, Widget? child) =>
-            const Expanded(child: Placeholder()));
+            Scaffold(
+                backgroundColor: Theme.of(context).colorScheme.background,
+                body: const Center(
+                    child: SingleChildScrollView(
+                  child: Placeholder(),
+                ))));
   }
 }
