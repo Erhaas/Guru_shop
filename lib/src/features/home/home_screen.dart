@@ -1,15 +1,19 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:guru_shop/gen/assets.gen.dart';
 import 'package:guru_shop/src/core/viewmodels/login_viewmodel.dart';
+import 'package:guru_shop/src/data.dart';
 import 'package:guru_shop/src/features/baseview.dart';
 import 'package:guru_shop/src/shared/components/header_content.dart';
 import 'package:guru_shop/src/shared/components/input.dart';
+import 'package:guru_shop/src/shared/components/product_cart.dart';
 import 'package:guru_shop/src/shared/utils/theme/colors.dart';
 
 @RoutePage()
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return BaseView(
@@ -27,6 +31,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                   leadingWidth: 200,
+                  elevation: 0.4,
                   centerTitle: false,
                   actionsIconTheme: IconThemeData(
                       color: Theme.of(context).colorScheme.secondary),
@@ -47,54 +52,225 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                   ]),
-              body: SingleChildScrollView(
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    children: [
-                      Container(
-                        height: 200,
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(10)),
-                          image: DecorationImage(
-                              image: AssetImage(Assets.images.promo1.path),
-                              fit: BoxFit.fill),
-                          color: Theme.of(context).colorScheme.secondary,
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(20.0),
-                          child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "Super Flash Sale",
+              body: Padding(
+                padding: const EdgeInsets.fromLTRB(16.0, 0, 16, 16),
+                child: ListView(
+                  children: [
+                    Container(
+                      height: 200,
+                      margin: const EdgeInsets.only(top: 16.0),
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(10)),
+                        image: DecorationImage(
+                            image: AssetImage(Assets.images.promo1.path),
+                            fit: BoxFit.fill),
+                        color: Theme.of(context).colorScheme.secondary,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Super Flash Sale",
+                                style: Theme.of(context).textTheme.displayLarge,
+                              ),
+                              Expanded(
+                                child: Text(
+                                  "50% Off",
                                   style:
                                       Theme.of(context).textTheme.displayLarge,
                                 ),
-                                Expanded(
-                                  child: Text(
-                                    "50% Off",
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .displayLarge,
-                                  ),
-                                ),
-                                const PromotionTime(),
-                              ]),
-                        ),
+                              ),
+                              const PromotionTime(),
+                            ]),
                       ),
-                      const ContentHeader(
+                    ),
+                    ContentHeader(
                         title: "Category",
-                        action: Text("sdfsdf"),
+                        action: GestureDetector(
+                          onTap: () => {},
+                          child: Text('More Category',
+                              style: TextStyle(
+                                  fontSize: Theme.of(context)
+                                      .textTheme
+                                      .titleSmall!
+                                      .fontSize,
+                                  fontWeight: FontWeight.w600,
+                                  color:
+                                      Theme.of(context).colorScheme.primary)),
+                        ),
+                        child: SizedBox(
+                          height: 120,
+                          child: ListView(
+                            scrollDirection: Axis.horizontal,
+                            children: [
+                              for (final category in list_categories)
+                                CategoryItem(
+                                    label: category["label"],
+                                    image: category["image"]),
+                            ],
+                          ),
+                        )),
+                    ContentHeader(
+                        title: "Flash Sale",
+                        action: GestureDetector(
+                          onTap: () => {},
+                          child: Text('See More',
+                              style: TextStyle(
+                                  fontSize: Theme.of(context)
+                                      .textTheme
+                                      .titleSmall!
+                                      .fontSize,
+                                  fontWeight: FontWeight.w600,
+                                  color:
+                                      Theme.of(context).colorScheme.primary)),
+                        ),
+                        child: SizedBox(
+                          height: 240,
+                          child: ListView(
+                            scrollDirection: Axis.horizontal,
+                            children: [
+                              for (final product in fs_products)
+                                SizedBox(
+                                    width: 160,
+                                    child: ProductCard(product: product))
+                            ],
+                          ),
+                        )),
+                    ContentHeader(
+                        title: "Mega Sale",
+                        action: GestureDetector(
+                          onTap: () => {},
+                          child: Text('See More',
+                              style: TextStyle(
+                                  fontSize: Theme.of(context)
+                                      .textTheme
+                                      .titleSmall!
+                                      .fontSize,
+                                  fontWeight: FontWeight.w600,
+                                  color:
+                                      Theme.of(context).colorScheme.primary)),
+                        ),
+                        child: SizedBox(
+                          height: 240,
+                          child: ListView(
+                            scrollDirection: Axis.horizontal,
+                            children: [
+                              for (final product in ms_products)
+                                SizedBox(
+                                    width: 160,
+                                    child: ProductCard(product: product))
+                            ],
+                          ),
+                        )),
+                    Container(
+                      height: 200,
+                      margin: const EdgeInsets.symmetric(vertical: 16.0),
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(10)),
+                        image: DecorationImage(
+                            image: AssetImage(Assets.images.promo2.path),
+                            fit: BoxFit.fill),
+                        color: Theme.of(context).colorScheme.secondary,
                       ),
-                      Placeholder()
-                    ],
-                  ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 30.0, horizontal: 40),
+                        child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  "Recomended Product",
+                                  style:
+                                      Theme.of(context).textTheme.displayLarge,
+                                ),
+                              ),
+                              Text(
+                                "We recommend the best for you",
+                                style: TextStyle(
+                                    color: Theme.of(context)
+                                        .textTheme
+                                        .displayLarge!
+                                        .color),
+                              ),
+                            ]),
+                      ),
+                    ),
+                    Center(
+                      child: Wrap(
+                        direction: Axis.horizontal,
+                        spacing: 10,
+                        runSpacing: 10,
+                        children: [
+                          for (final product in ms_products)
+                            Container(
+                                width: 160,
+                                child: ProductCard(product: product))
+                        ],
+                      ),
+                    )
+                  ],
                 ),
               ),
             ));
+  }
+}
+
+class CategoryItem extends StatelessWidget {
+  const CategoryItem({
+    super.key,
+    required this.label,
+    required this.image,
+  });
+
+  final String image;
+  final String label;
+
+  @override
+  Widget build(BuildContext context) {
+    // var size = MediaQuery.of(context).size;
+
+    return InkWell(
+        onTap: () => '',
+        child: Container(
+          width: 80,
+          padding: EdgeInsets.symmetric(vertical: 3),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                  height: 70,
+                  width: double.infinity,
+                  margin: const EdgeInsets.symmetric(horizontal: 5),
+                  padding: const EdgeInsets.all(20),
+                  decoration: BoxDecoration(
+                      border: Border.all(
+                          width: 0.3,
+                          color: Theme.of(context).colorScheme.secondary),
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(150.0))),
+                  child: SvgPicture.asset(
+                    image,
+                    color: Theme.of(context).colorScheme.primary,
+                  )),
+              const Padding(
+                padding: EdgeInsets.symmetric(vertical: 3.0),
+              ),
+              Text(
+                label,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: Theme.of(context).textTheme.bodySmall,
+              ),
+            ],
+          ),
+        ));
   }
 }
 

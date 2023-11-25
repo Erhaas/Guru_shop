@@ -9,7 +9,8 @@ ThemeData lightThemeCustom() {
           primary: primaryBlue,
           secondary: neuralGrey,
           surface: whiteColor,
-          background: whiteColor),
+          background: whiteColor,
+          error: primaryRed),
       appBarTheme: const AppBarTheme(
           backgroundColor: whiteColor,
           toolbarHeight: 80,
@@ -39,6 +40,7 @@ ThemeData lightThemeCustom() {
           titleSmall: TextStyle(
               color: neuralDark,
               fontFamily: FontFamily.poppins,
+              overflow: TextOverflow.ellipsis,
               fontSize: 14,
               fontWeight: FontWeight.bold),
           bodyLarge: TextStyle(
