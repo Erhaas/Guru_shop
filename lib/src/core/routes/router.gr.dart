@@ -33,6 +33,22 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const LoginScreen(),
       );
     },
+    ProductListRoute.name: (routeData) {
+      final pathParams = routeData.inheritedPathParams;
+      final args = routeData.argsAs<ProductListRouteArgs>(
+          orElse: () => ProductListRouteArgs(
+                category: pathParams.getString('id'),
+                title: pathParams.getString('title'),
+              ));
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: ProductListScreen(
+          key: args.key,
+          category: args.category,
+          title: args.title,
+        ),
+      );
+    },
     RegisterRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -88,6 +104,53 @@ class LoginRoute extends PageRouteInfo<void> {
   static const String name = 'LoginRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [ProductListScreen]
+class ProductListRoute extends PageRouteInfo<ProductListRouteArgs> {
+  ProductListRoute({
+    Key? key,
+    required String category,
+    required String title,
+    List<PageRouteInfo>? children,
+  }) : super(
+          ProductListRoute.name,
+          args: ProductListRouteArgs(
+            key: key,
+            category: category,
+            title: title,
+          ),
+          rawPathParams: {
+            'id': category,
+            'title': title,
+          },
+          initialChildren: children,
+        );
+
+  static const String name = 'ProductListRoute';
+
+  static const PageInfo<ProductListRouteArgs> page =
+      PageInfo<ProductListRouteArgs>(name);
+}
+
+class ProductListRouteArgs {
+  const ProductListRouteArgs({
+    this.key,
+    required this.category,
+    required this.title,
+  });
+
+  final Key? key;
+
+  final String category;
+
+  final String title;
+
+  @override
+  String toString() {
+    return 'ProductListRouteArgs{key: $key, category: $category, title: $title}';
+  }
 }
 
 /// generated route for

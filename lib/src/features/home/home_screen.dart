@@ -2,11 +2,14 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:guru_shop/gen/assets.gen.dart';
-import 'package:guru_shop/src/core/viewmodels/login_viewmodel.dart';
+import 'package:guru_shop/src/core/enum/viewstate.dart';
+import 'package:guru_shop/src/core/routes/router.dart';
+import 'package:guru_shop/src/core/viewmodels/home_viewmodel.dart';
 import 'package:guru_shop/src/data.dart';
 import 'package:guru_shop/src/features/baseview.dart';
 import 'package:guru_shop/src/shared/components/header_content.dart';
 import 'package:guru_shop/src/shared/components/input.dart';
+import 'package:guru_shop/src/shared/components/loading.dart';
 import 'package:guru_shop/src/shared/components/product_cart.dart';
 import 'package:guru_shop/src/shared/utils/theme/colors.dart';
 
@@ -16,8 +19,15 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BaseView(
-        builder: (BuildContext context, LoginViewModel model, Widget? child) =>
+    final router = AutoRouter.of(context);
+    return BaseView<HomeViewModel>(
+        onModelReady: (model) => {
+              model
+                ..getProduct()
+                ..getProductList("flash_sale")
+                ..getProductList("mega_sale")
+            },
+        builder: (BuildContext context, HomeViewModel model, Widget? child) =>
             Scaffold(
               backgroundColor: Theme.of(context).colorScheme.background,
               appBar: AppBar(
@@ -30,6 +40,7 @@ class HomeScreen extends StatelessWidget {
                       placeholder: 'Search',
                     ),
                   ),
+                  automaticallyImplyLeading: false,
                   leadingWidth: 200,
                   elevation: 0.4,
                   centerTitle: false,
@@ -52,172 +63,197 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                   ]),
-              body: Padding(
-                padding: const EdgeInsets.fromLTRB(16.0, 0, 16, 16),
-                child: ListView(
-                  children: [
-                    Container(
-                      height: 200,
-                      margin: const EdgeInsets.only(top: 16.0),
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(10)),
-                        image: DecorationImage(
-                            image: AssetImage(Assets.images.promo1.path),
-                            fit: BoxFit.fill),
-                        color: Theme.of(context).colorScheme.secondary,
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(20.0),
-                        child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "Super Flash Sale",
-                                style: Theme.of(context).textTheme.displayLarge,
-                              ),
-                              Expanded(
-                                child: Text(
-                                  "50% Off",
-                                  style:
-                                      Theme.of(context).textTheme.displayLarge,
-                                ),
-                              ),
-                              const PromotionTime(),
-                            ]),
-                      ),
-                    ),
-                    ContentHeader(
-                        title: "Category",
-                        action: GestureDetector(
-                          onTap: () => {},
-                          child: Text('More Category',
-                              style: TextStyle(
-                                  fontSize: Theme.of(context)
-                                      .textTheme
-                                      .titleSmall!
-                                      .fontSize,
-                                  fontWeight: FontWeight.w600,
-                                  color:
-                                      Theme.of(context).colorScheme.primary)),
-                        ),
-                        child: SizedBox(
-                          height: 120,
-                          child: ListView(
-                            scrollDirection: Axis.horizontal,
-                            children: [
-                              for (final category in list_categories)
-                                CategoryItem(
-                                    label: category["label"],
-                                    image: category["image"]),
-                            ],
-                          ),
-                        )),
-                    ContentHeader(
-                        title: "Flash Sale",
-                        action: GestureDetector(
-                          onTap: () => {},
-                          child: Text('See More',
-                              style: TextStyle(
-                                  fontSize: Theme.of(context)
-                                      .textTheme
-                                      .titleSmall!
-                                      .fontSize,
-                                  fontWeight: FontWeight.w600,
-                                  color:
-                                      Theme.of(context).colorScheme.primary)),
-                        ),
-                        child: SizedBox(
-                          height: 240,
-                          child: ListView(
-                            scrollDirection: Axis.horizontal,
-                            children: [
-                              for (final product in fs_products)
-                                SizedBox(
-                                    width: 160,
-                                    child: ProductCard(product: product))
-                            ],
-                          ),
-                        )),
-                    ContentHeader(
-                        title: "Mega Sale",
-                        action: GestureDetector(
-                          onTap: () => {},
-                          child: Text('See More',
-                              style: TextStyle(
-                                  fontSize: Theme.of(context)
-                                      .textTheme
-                                      .titleSmall!
-                                      .fontSize,
-                                  fontWeight: FontWeight.w600,
-                                  color:
-                                      Theme.of(context).colorScheme.primary)),
-                        ),
-                        child: SizedBox(
-                          height: 240,
-                          child: ListView(
-                            scrollDirection: Axis.horizontal,
-                            children: [
-                              for (final product in ms_products)
-                                SizedBox(
-                                    width: 160,
-                                    child: ProductCard(product: product))
-                            ],
-                          ),
-                        )),
-                    Container(
-                      height: 200,
-                      margin: const EdgeInsets.symmetric(vertical: 16.0),
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(10)),
-                        image: DecorationImage(
-                            image: AssetImage(Assets.images.promo2.path),
-                            fit: BoxFit.fill),
-                        color: Theme.of(context).colorScheme.secondary,
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 30.0, horizontal: 40),
-                        child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Expanded(
-                                child: Text(
-                                  "Recomended Product",
-                                  style:
-                                      Theme.of(context).textTheme.displayLarge,
-                                ),
-                              ),
-                              Text(
-                                "We recommend the best for you",
-                                style: TextStyle(
-                                    color: Theme.of(context)
-                                        .textTheme
-                                        .displayLarge!
-                                        .color),
-                              ),
-                            ]),
-                      ),
-                    ),
-                    Center(
-                      child: Wrap(
-                        direction: Axis.horizontal,
-                        spacing: 10,
-                        runSpacing: 10,
+              body: model.state == ViewState.Busy
+                  ? const Loading()
+                  : Padding(
+                      padding: const EdgeInsets.fromLTRB(16.0, 0, 16, 16),
+                      child: ListView(
                         children: [
-                          for (final product in ms_products)
-                            Container(
-                                width: 160,
-                                child: ProductCard(product: product))
+                          Container(
+                            height: 200,
+                            margin: const EdgeInsets.only(top: 16.0),
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(10)),
+                              image: DecorationImage(
+                                  image: AssetImage(Assets.images.promo1.path),
+                                  fit: BoxFit.fill),
+                              color: Theme.of(context).colorScheme.secondary,
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(20.0),
+                              child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "Super Flash Sale",
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .displayLarge,
+                                    ),
+                                    Expanded(
+                                      child: Text(
+                                        "50% Off",
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .displayLarge,
+                                      ),
+                                    ),
+                                    const PromotionTime(),
+                                  ]),
+                            ),
+                          ),
+                          ContentHeader(
+                              title: "Category",
+                              action: GestureDetector(
+                                onTap: () => {},
+                                child: GestureDetector(
+                                  onTap: () => {
+                                    router.push(ProductListRoute(
+                                        category: "category",
+                                        title: "Product List"))
+                                  },
+                                  child: Text('More Category',
+                                      style: TextStyle(
+                                          fontSize: Theme.of(context)
+                                              .textTheme
+                                              .titleSmall!
+                                              .fontSize,
+                                          fontWeight: FontWeight.w600,
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .primary)),
+                                ),
+                              ),
+                              child: SizedBox(
+                                height: 120,
+                                child: ListView(
+                                  scrollDirection: Axis.horizontal,
+                                  children: [
+                                    for (final category in listCategories)
+                                      CategoryItem(
+                                          label: category.label,
+                                          image: category.image),
+                                  ],
+                                ),
+                              )),
+                          ContentHeader(
+                              title: "Flash Sale",
+                              action: GestureDetector(
+                                onTap: () => {
+                                  router.push(ProductListRoute(
+                                      category: "flash_sale",
+                                      title: "Flash Sale"))
+                                },
+                                child: Text('See More',
+                                    style: TextStyle(
+                                        fontSize: Theme.of(context)
+                                            .textTheme
+                                            .titleSmall!
+                                            .fontSize,
+                                        fontWeight: FontWeight.w600,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .primary)),
+                              ),
+                              child: SizedBox(
+                                height: 240,
+                                child: ListView(
+                                  scrollDirection: Axis.horizontal,
+                                  children: [
+                                    for (final product
+                                        in model.productList('flash_sale'))
+                                      SizedBox(
+                                          width: 160,
+                                          child: ProductCard(product: product))
+                                  ],
+                                ),
+                              )),
+                          ContentHeader(
+                              title: "Mega Sale",
+                              action: GestureDetector(
+                                onTap: () => {
+                                  router.push(ProductListRoute(
+                                      category: "mega_sale",
+                                      title: "Mega Sale"))
+                                },
+                                child: Text('See More',
+                                    style: TextStyle(
+                                        fontSize: Theme.of(context)
+                                            .textTheme
+                                            .titleSmall!
+                                            .fontSize,
+                                        fontWeight: FontWeight.w600,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .primary)),
+                              ),
+                              child: SizedBox(
+                                height: 240,
+                                child: ListView(
+                                  scrollDirection: Axis.horizontal,
+                                  children: [
+                                    for (final product
+                                        in model.productList('mega_sale'))
+                                      SizedBox(
+                                          width: 160,
+                                          child: ProductCard(product: product))
+                                  ],
+                                ),
+                              )),
+                          Container(
+                            height: 200,
+                            margin: const EdgeInsets.symmetric(vertical: 16.0),
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(10)),
+                              image: DecorationImage(
+                                  image: AssetImage(Assets.images.promo2.path),
+                                  fit: BoxFit.fill),
+                              color: Theme.of(context).colorScheme.secondary,
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: 30.0, horizontal: 40),
+                              child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Expanded(
+                                      child: Text(
+                                        "Recomended Product",
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .displayLarge,
+                                      ),
+                                    ),
+                                    Text(
+                                      "We recommend the best for you",
+                                      style: TextStyle(
+                                          color: Theme.of(context)
+                                              .textTheme
+                                              .displayLarge!
+                                              .color),
+                                    ),
+                                  ]),
+                            ),
+                          ),
+                          GridView.count(
+                            shrinkWrap: true,
+                            childAspectRatio: 0.72,
+                            physics: const NeverScrollableScrollPhysics(),
+                            primary: false,
+                            mainAxisSpacing: 10,
+                            crossAxisCount: 2,
+                            children: <Widget>[
+                              for (final product in model.products)
+                                ProductCard(product: product)
+                            ],
+                          ),
                         ],
                       ),
-                    )
-                  ],
-                ),
-              ),
+                    ),
             ));
   }
 }
