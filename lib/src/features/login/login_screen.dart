@@ -69,13 +69,13 @@ class LoginScreen extends StatelessWidget {
                           padding: const EdgeInsets.symmetric(vertical: 16.0),
                           child: Text(
                             "OR",
-                            style: Theme.of(context).textTheme.bodyLarge,
+                            style: Theme.of(context).textTheme.bodyMedium,
                           ),
                         ),
                         SizedBox(
                           width: double.infinity,
                           child: Button(
-                            textStyle: Theme.of(context).textTheme.bodyLarge,
+                            textStyle: Theme.of(context).textTheme.bodyMedium,
                             prefix: Assets.icons.googleIcon.svg(),
                             text: "Login with Google",
                           ),
@@ -86,7 +86,7 @@ class LoginScreen extends StatelessWidget {
                         SizedBox(
                           width: double.infinity,
                           child: Button(
-                            textStyle: Theme.of(context).textTheme.bodyLarge,
+                            textStyle: Theme.of(context).textTheme.bodyMedium,
                             prefix: Assets.icons.facebookIcon.svg(),
                             text: "Login with Facebook",
                           ),

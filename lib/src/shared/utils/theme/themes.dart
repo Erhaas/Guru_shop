@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:guru_shop/gen/fonts.gen.dart';
+import 'package:guru_shop/src/shared/utils/common.dart';
 import 'package:guru_shop/src/shared/utils/theme/colors.dart';
 
 ThemeData lightThemeCustom() {
@@ -16,45 +17,7 @@ ThemeData lightThemeCustom() {
           toolbarHeight: 80,
           elevation: 1,
           actionsIconTheme: IconThemeData(color: neuralGrey)),
-      textTheme: const TextTheme(
-          displayLarge: TextStyle(
-              color: whiteColor,
-              fontFamily: FontFamily.poppins,
-              fontSize: 24,
-              fontWeight: FontWeight.bold),
-          displayMedium: TextStyle(
-              color: primaryBlue,
-              fontFamily: FontFamily.poppins,
-              fontSize: 14,
-              fontWeight: FontWeight.bold),
-          titleLarge: TextStyle(
-              color: neuralDark,
-              fontFamily: FontFamily.poppins,
-              fontSize: 20,
-              fontWeight: FontWeight.bold),
-          titleMedium: TextStyle(
-              color: neuralDark,
-              fontFamily: FontFamily.poppins,
-              fontSize: 16,
-              fontWeight: FontWeight.bold),
-          titleSmall: TextStyle(
-              color: neuralDark,
-              fontFamily: FontFamily.poppins,
-              overflow: TextOverflow.ellipsis,
-              fontSize: 14,
-              fontWeight: FontWeight.bold),
-          bodyLarge: TextStyle(
-              color: neuralGrey,
-              fontFamily: FontFamily.poppins,
-              fontSize: 12,
-              fontWeight: FontWeight.w600),
-          bodyMedium: TextStyle(
-              color: neuralDark, fontFamily: FontFamily.poppins, fontSize: 12),
-          bodySmall: TextStyle(
-            color: neuralGrey,
-            fontFamily: FontFamily.poppins,
-            fontSize: 12,
-          )),
+      textTheme: textTheme(neuralGrey),
       textSelectionTheme: const TextSelectionThemeData(cursorColor: neuralGrey),
       elevatedButtonTheme: ElevatedButtonThemeData(
           style: ButtonStyle(

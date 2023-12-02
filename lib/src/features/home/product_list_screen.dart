@@ -25,7 +25,7 @@ class ProductListScreen extends StatelessWidget {
               backgroundColor: Theme.of(context).colorScheme.background,
               appBar: AppBar(
                   title: Text(title,
-                      style: Theme.of(context).textTheme.titleSmall),
+                      style: Theme.of(context).textTheme.bodyMedium),
                   titleTextStyle:
                       TextStyle(color: Theme.of(context).colorScheme.secondary),
                   elevation: 0.4,

@@ -30,7 +30,7 @@ class RegisterScreen extends StatelessWidget {
                           padding: const EdgeInsets.only(top: 16),
                           child: Text(
                             'Let’s Get Started',
-                            style: Theme.of(context).textTheme.titleMedium,
+                            style: Theme.of(context).textTheme.titleSmall,
                           ),
                         ),
                         Padding(

@@ -37,7 +37,7 @@ class ProductCard extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8),
               child: Text(product.name,
-                  maxLines: 2, style: Theme.of(context).textTheme.titleSmall),
+                  maxLines: 2, style: Theme.of(context).textTheme.bodyMedium),
             ),
             Padding(
               padding: const EdgeInsets.only(bottom: 8),
@@ -46,7 +46,7 @@ class ProductCard extends StatelessWidget {
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   color: Theme.of(context).colorScheme.primary,
-                  fontSize: Theme.of(context).textTheme.titleSmall!.fontSize,
+                  fontSize: Theme.of(context).textTheme.bodyMedium!.fontSize,
                   overflow: TextOverflow.ellipsis,
                 ),
               ),
