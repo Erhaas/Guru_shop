@@ -11,7 +11,6 @@ import 'package:guru_shop/src/shared/components/header_content.dart';
 import 'package:guru_shop/src/shared/components/input.dart';
 import 'package:guru_shop/src/shared/components/loading.dart';
 import 'package:guru_shop/src/shared/components/product_cart.dart';
-import 'package:guru_shop/src/shared/utils/theme/colors.dart';
 
 @RoutePage()
 class HomeScreen extends StatelessWidget {
@@ -20,6 +19,9 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final router = AutoRouter.of(context);
+    final colorScheme = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
+
     return BaseView<HomeViewModel>(
         onModelReady: (model) => {
               model
@@ -29,13 +31,12 @@ class HomeScreen extends StatelessWidget {
             },
         builder: (BuildContext context, HomeViewModel model, Widget? child) =>
             Scaffold(
-              backgroundColor: Theme.of(context).colorScheme.background,
               appBar: AppBar(
                   title: Center(
                     child: Input(
                       prefixe: Icon(
                         Icons.search,
-                        color: Theme.of(context).colorScheme.primary,
+                        color: colorScheme.primary,
                       ),
                       placeholder: 'Search',
                     ),
@@ -44,8 +45,7 @@ class HomeScreen extends StatelessWidget {
                   leadingWidth: 200,
                   elevation: 0.4,
                   centerTitle: false,
-                  actionsIconTheme: IconThemeData(
-                      color: Theme.of(context).colorScheme.secondary),
+                  actionsIconTheme: IconThemeData(color: colorScheme.secondary),
                   actions: const [
                     Padding(
                       padding: EdgeInsets.all(4.0),
@@ -79,7 +79,7 @@ class HomeScreen extends StatelessWidget {
                               image: DecorationImage(
                                   image: AssetImage(Assets.images.promo1.path),
                                   fit: BoxFit.fill),
-                              color: Theme.of(context).colorScheme.secondary,
+                              color: colorScheme.secondary,
                             ),
                             child: Padding(
                               padding: const EdgeInsets.all(20.0),
@@ -88,16 +88,14 @@ class HomeScreen extends StatelessWidget {
                                   children: [
                                     Text(
                                       "Super Flash Sale",
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .displayLarge,
+                                      style: textTheme.displayLarge!.copyWith(
+                                          color: colorScheme.onPrimary),
                                     ),
                                     Expanded(
                                       child: Text(
                                         "50% Off",
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .displayLarge,
+                                        style: textTheme.displayLarge!.copyWith(
+                                            color: colorScheme.onPrimary),
                                       ),
                                     ),
                                     const PromotionTime(),
@@ -115,15 +113,8 @@ class HomeScreen extends StatelessWidget {
                                         title: "Product List"))
                                   },
                                   child: Text('More Category',
-                                      style: TextStyle(
-                                          fontSize: Theme.of(context)
-                                              .textTheme
-                                              .bodyMedium!
-                                              .fontSize,
-                                          fontWeight: FontWeight.w600,
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .primary)),
+                                      style: textTheme.bodyLarge!.copyWith(
+                                          color: colorScheme.primary)),
                                 ),
                               ),
                               child: SizedBox(
@@ -147,15 +138,8 @@ class HomeScreen extends StatelessWidget {
                                       title: "Flash Sale"))
                                 },
                                 child: Text('See More',
-                                    style: TextStyle(
-                                        fontSize: Theme.of(context)
-                                            .textTheme
-                                            .bodyMedium!
-                                            .fontSize,
-                                        fontWeight: FontWeight.w600,
-                                        color: Theme.of(context)
-                                            .colorScheme
-                                            .primary)),
+                                    style: textTheme.bodyLarge!
+                                        .copyWith(color: colorScheme.primary)),
                               ),
                               child: SizedBox(
                                 height: 240,
@@ -179,15 +163,8 @@ class HomeScreen extends StatelessWidget {
                                       title: "Mega Sale"))
                                 },
                                 child: Text('See More',
-                                    style: TextStyle(
-                                        fontSize: Theme.of(context)
-                                            .textTheme
-                                            .bodyMedium!
-                                            .fontSize,
-                                        fontWeight: FontWeight.w600,
-                                        color: Theme.of(context)
-                                            .colorScheme
-                                            .primary)),
+                                    style: textTheme.bodyLarge!
+                                        .copyWith(color: colorScheme.primary)),
                               ),
                               child: SizedBox(
                                 height: 240,
@@ -212,7 +189,7 @@ class HomeScreen extends StatelessWidget {
                               image: DecorationImage(
                                   image: AssetImage(Assets.images.promo2.path),
                                   fit: BoxFit.fill),
-                              color: Theme.of(context).colorScheme.secondary,
+                              color: colorScheme.secondary,
                             ),
                             child: Padding(
                               padding: const EdgeInsets.symmetric(
@@ -223,18 +200,14 @@ class HomeScreen extends StatelessWidget {
                                     Expanded(
                                       child: Text(
                                         "Recomended Product",
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .displayLarge,
+                                        style: textTheme.displayLarge!.copyWith(
+                                            color: colorScheme.onPrimary),
                                       ),
                                     ),
                                     Text(
                                       "We recommend the best for you",
-                                      style: TextStyle(
-                                          color: Theme.of(context)
-                                              .textTheme
-                                              .displayLarge!
-                                              .color),
+                                      style: textTheme.bodyMedium!.copyWith(
+                                          color: colorScheme.onPrimary),
                                     ),
                                   ]),
                             ),
@@ -271,7 +244,8 @@ class CategoryItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // var size = MediaQuery.of(context).size;
-
+    final colorScheme = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
     return InkWell(
         onTap: () => '',
         child: Container(
@@ -286,23 +260,23 @@ class CategoryItem extends StatelessWidget {
                   margin: const EdgeInsets.symmetric(horizontal: 5),
                   padding: const EdgeInsets.all(20),
                   decoration: BoxDecoration(
-                      border: Border.all(
-                          width: 0.3,
-                          color: Theme.of(context).colorScheme.secondary),
+                      border:
+                          Border.all(width: 0.3, color: colorScheme.secondary),
                       borderRadius:
                           const BorderRadius.all(Radius.circular(150.0))),
                   child: SvgPicture.asset(
                     image,
-                    color: Theme.of(context).colorScheme.primary,
+                    color: colorScheme.primary,
                   )),
               const Padding(
                 padding: EdgeInsets.symmetric(vertical: 3.0),
               ),
               Text(
                 label,
+                textAlign: TextAlign.center,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
-                style: Theme.of(context).textTheme.bodySmall,
+                style: textTheme.bodySmall,
               ),
             ],
           ),
@@ -315,48 +289,53 @@ class PromotionTime extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    final colorScheme = Theme.of(context).colorScheme;
     return Row(
       children: [
         Container(
             margin: const EdgeInsets.only(right: 5),
             padding: const EdgeInsets.all(10),
             decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.background,
+              color: colorScheme.background,
               borderRadius: const BorderRadius.all(Radius.circular(10)),
             ),
             child: Text(
               "08",
-              style: Theme.of(context).textTheme.titleMedium,
+              style:
+                  textTheme.titleSmall!.copyWith(fontWeight: FontWeight.w700),
             )),
-        const Text(
+        Text(
           ":",
-          style: TextStyle(color: whiteColor, fontSize: 16),
+          style: textTheme.titleSmall!.copyWith(color: colorScheme.onPrimary),
         ),
         Container(
             margin: const EdgeInsets.symmetric(horizontal: 5),
             padding: const EdgeInsets.all(10),
             decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.background,
+              color: colorScheme.background,
               borderRadius: const BorderRadius.all(Radius.circular(10)),
             ),
             child: Text(
               "32",
-              style: Theme.of(context).textTheme.titleMedium,
+              style:
+                  textTheme.titleSmall!.copyWith(fontWeight: FontWeight.w700),
             )),
-        const Text(
+        Text(
           ":",
-          style: TextStyle(color: whiteColor, fontSize: 16),
+          style: textTheme.titleSmall!.copyWith(color: colorScheme.onPrimary),
         ),
         Container(
             margin: const EdgeInsets.symmetric(horizontal: 5),
             padding: const EdgeInsets.all(10),
             decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.background,
+              color: colorScheme.background,
               borderRadius: const BorderRadius.all(Radius.circular(10)),
             ),
             child: Text(
               "42",
-              style: Theme.of(context).textTheme.titleMedium,
+              style:
+                  textTheme.titleSmall!.copyWith(fontWeight: FontWeight.w700),
             )),
       ],
     );

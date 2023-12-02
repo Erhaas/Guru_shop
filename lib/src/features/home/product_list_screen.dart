@@ -17,29 +17,23 @@ class ProductListScreen extends StatelessWidget {
   final String title;
   @override
   Widget build(BuildContext context) {
-    final router = AutoRouter.of(context);
+    // final router = AutoRouter.of(context);
+    final colorScheme = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
+
     return BaseView<HomeViewModel>(
         onModelReady: (model) => model.getProductList(category),
         builder: (BuildContext context, HomeViewModel model, Widget? child) =>
             Scaffold(
-              backgroundColor: Theme.of(context).colorScheme.background,
               appBar: AppBar(
-                  title: Text(title,
-                      style: Theme.of(context).textTheme.bodyMedium),
-                  titleTextStyle:
-                      TextStyle(color: Theme.of(context).colorScheme.secondary),
+                  title: Text(title, style: textTheme.bodyLarge),
                   elevation: 0.4,
                   centerTitle: false,
-                  iconTheme: IconThemeData(
-                      color: Theme.of(context).colorScheme.secondary),
-                  actionsIconTheme: IconThemeData(
-                      color: Theme.of(context).colorScheme.secondary),
                   actions: const [
                     Padding(
                       padding: EdgeInsets.all(4.0),
                       child: Icon(
                         Icons.search_outlined,
-                        fill: 0.2,
                         size: 25,
                       ),
                     ),
@@ -59,7 +53,7 @@ class ProductListScreen extends StatelessWidget {
                         image: DecorationImage(
                             image: AssetImage(Assets.images.promo1.path),
                             fit: BoxFit.fill),
-                        color: Theme.of(context).colorScheme.secondary,
+                        color: colorScheme.secondary,
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(20.0),
@@ -68,13 +62,14 @@ class ProductListScreen extends StatelessWidget {
                             children: [
                               Text(
                                 "Super Flash Sale",
-                                style: Theme.of(context).textTheme.displayLarge,
+                                style: textTheme.displayLarge!
+                                    .copyWith(color: colorScheme.onPrimary),
                               ),
                               Expanded(
                                 child: Text(
                                   "50% Off",
-                                  style:
-                                      Theme.of(context).textTheme.displayLarge,
+                                  style: textTheme.displayLarge!
+                                      .copyWith(color: colorScheme.onPrimary),
                                 ),
                               ),
                             ]),

@@ -6,19 +6,23 @@ import 'package:guru_shop/src/shared/utils/theme/colors.dart';
 ThemeData lightThemeCustom() {
   return ThemeData.light().copyWith(
       primaryColor: primaryBlue,
+      scaffoldBackgroundColor: whiteColor,
       colorScheme: const ColorScheme.light(
           primary: primaryBlue,
           secondary: neuralGrey,
           surface: whiteColor,
           background: whiteColor,
+          secondaryContainer: neuralGrey,
           error: primaryRed),
       appBarTheme: const AppBarTheme(
           backgroundColor: whiteColor,
+          iconTheme: IconThemeData(color: neuralDark),
           toolbarHeight: 80,
           elevation: 1,
           actionsIconTheme: IconThemeData(color: neuralGrey)),
-      textTheme: textTheme(neuralGrey),
+      textTheme: textTheme(neuralDark),
       textSelectionTheme: const TextSelectionThemeData(cursorColor: neuralGrey),
+      iconTheme: IconThemeData(color: neuralGrey),
       elevatedButtonTheme: ElevatedButtonThemeData(
           style: ButtonStyle(
               backgroundColor: MaterialStateProperty.all<Color>(primaryBlue),

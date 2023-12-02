@@ -12,7 +12,7 @@ TextTheme textTheme(Color? color) {
     titleSmall:
         TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: color),
     bodyLarge:
-        TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: color),
+        TextStyle(fontSize: 14, fontWeight: FontWeight.w700, color: color),
     bodyMedium:
         TextStyle(fontSize: 12, fontWeight: FontWeight.normal, color: color),
     bodySmall:

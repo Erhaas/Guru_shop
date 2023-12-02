@@ -14,10 +14,11 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final router = AutoRouter.of(context);
+    final colorScheme = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
     return BaseView(
         builder: (BuildContext context, LoginViewModel model, Widget? child) =>
             Scaffold(
-              backgroundColor: Theme.of(context).colorScheme.background,
               body: Center(
                 child: SingleChildScrollView(
                   child: Padding(
@@ -30,14 +31,15 @@ class LoginScreen extends StatelessWidget {
                           padding: const EdgeInsets.only(top: 16),
                           child: Text(
                             'Welcome to Guru Shop',
-                            style: Theme.of(context).textTheme.titleMedium,
+                            style: textTheme.titleSmall,
                           ),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(top: 8, bottom: 28),
                           child: Text(
                             'Sign in to continue',
-                            style: Theme.of(context).textTheme.bodySmall,
+                            style: textTheme.bodyMedium!.copyWith(
+                                color: colorScheme.secondaryContainer),
                           ),
                         ),
                         const Input(
@@ -59,68 +61,76 @@ class LoginScreen extends StatelessWidget {
                           width: double.infinity,
                           child: Button(
                             text: "Sign In",
-                            bgColor: Theme.of(context).colorScheme.primary,
-                            color: Theme.of(context).colorScheme.surface,
+                            bgColor: colorScheme.primary,
+                            color: colorScheme.surface,
                             onPressed: () =>
                                 {router.push(const BottomNavRouteWrapper())},
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 16.0),
-                          child: Text(
-                            "OR",
-                            style: Theme.of(context).textTheme.bodyMedium,
-                          ),
+                        Row(
+                          children: [
+                            const Expanded(
+                              child: Divider(),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(16),
+                              child: Text("OR",
+                                  style: textTheme.bodyMedium!.copyWith(
+                                      color: colorScheme.secondaryContainer)),
+                            ),
+                            const Expanded(
+                              child: Divider(),
+                            ),
+                          ],
                         ),
                         SizedBox(
                           width: double.infinity,
                           child: Button(
-                            textStyle: Theme.of(context).textTheme.bodyMedium,
+                            textStyle: textTheme.bodyLarge!,
                             prefix: Assets.icons.googleIcon.svg(),
                             text: "Login with Google",
                           ),
                         ),
-                        const Padding(
-                          padding: EdgeInsets.symmetric(vertical: 4.0),
-                        ),
-                        SizedBox(
-                          width: double.infinity,
-                          child: Button(
-                            textStyle: Theme.of(context).textTheme.bodyMedium,
-                            prefix: Assets.icons.facebookIcon.svg(),
-                            text: "Login with Facebook",
+                        Padding(
+                          padding: const EdgeInsets.only(top: 4.0, bottom: 15),
+                          child: SizedBox(
+                            width: double.infinity,
+                            child: Button(
+                              textStyle: textTheme.bodyLarge,
+                              prefix: Assets.icons.facebookIcon.svg(),
+                              text: "Login with Facebook",
+                            ),
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 16.0),
-                          child: Text(
-                            'Forgot Password?',
-                            style: TextStyle(
-                                color: Theme.of(context).colorScheme.primary),
+                        InkWell(
+                          onTap: () => {},
+                          child: Padding(
+                            padding: const EdgeInsets.all(10),
+                            child: Text(
+                              'Forgot Password?',
+                              style: textTheme.bodyMedium!
+                                  .copyWith(color: colorScheme.primary),
+                            ),
                           ),
                         ),
-                        Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 4.0),
-                            child: GestureDetector(
-                              onTap: () => {router.push(const RegisterRoute())},
+                        InkWell(
+                            onTap: () => {router.push(const RegisterRoute())},
+                            child: Padding(
+                              padding: const EdgeInsets.all(10.0),
                               child: RichText(
                                 text: TextSpan(
                                   text: "Don't have a account? ",
-                                  style: Theme.of(context).textTheme.bodyMedium,
+                                  style: textTheme.bodyMedium,
                                   children: <TextSpan>[
                                     TextSpan(
-                                        text: 'Register',
-                                        style: TextStyle(
-                                            color: Theme.of(context)
-                                                .colorScheme
-                                                .primary)),
+                                      text: 'Register',
+                                      style: textTheme.bodyMedium!
+                                          .copyWith(color: colorScheme.primary),
+                                    ),
                                   ],
                                 ),
                               ),
-                            )
-                            // style: TextStyle(
-                            //     color: Theme.of(context).colorScheme.primary)),
-                            )
+                            ))
                       ],
                     ),
                   ),

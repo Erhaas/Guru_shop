@@ -10,6 +10,7 @@ class ContentHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Container(
       margin: const EdgeInsets.only(top: 24, bottom: 6),
       child: Column(
@@ -19,7 +20,9 @@ class ContentHeader extends StatelessWidget {
               Expanded(
                   child: Text(
                 title,
-                style: Theme.of(context).textTheme.bodyMedium,
+                style: textTheme.bodyLarge!.copyWith(
+                  fontWeight: FontWeight.w700,
+                ),
               )),
               if (action != null) SizedBox(child: action)
             ],
