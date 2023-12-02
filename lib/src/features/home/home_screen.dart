@@ -276,7 +276,9 @@ class CategoryItem extends StatelessWidget {
                 textAlign: TextAlign.center,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
-                style: textTheme.bodySmall,
+                style: textTheme.bodySmall!.copyWith(
+                    fontWeight: FontWeight.normal,
+                    color: colorScheme.secondaryContainer),
               ),
             ],
           ),
