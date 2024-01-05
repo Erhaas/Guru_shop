@@ -21,6 +21,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const BottomNavScreenWrapper(),
       );
     },
+    FavoriteProductRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const FavoriteProductScreen(),
+      );
+    },
     HomeRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -61,6 +67,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const SearchScreen(),
       );
     },
+    SettingRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const SettingScreen(),
+      );
+    },
   };
 }
 
@@ -74,6 +86,20 @@ class BottomNavRouteWrapper extends PageRouteInfo<void> {
         );
 
   static const String name = 'BottomNavRouteWrapper';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [FavoriteProductScreen]
+class FavoriteProductRoute extends PageRouteInfo<void> {
+  const FavoriteProductRoute({List<PageRouteInfo>? children})
+      : super(
+          FavoriteProductRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'FavoriteProductRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
@@ -177,6 +203,20 @@ class SearchRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'SearchRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [SettingScreen]
+class SettingRoute extends PageRouteInfo<void> {
+  const SettingRoute({List<PageRouteInfo>? children})
+      : super(
+          SettingRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'SettingRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

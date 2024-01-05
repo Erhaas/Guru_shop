@@ -32,7 +32,7 @@ class HomeViewModel extends BaseViewModel {
   Future getProductList(String categ) {
     setState(ViewState.Busy);
     return Future.delayed(
-        const Duration(milliseconds: 3000),
+        const Duration(milliseconds: 1000),
         () => {
               if (_productColleciton[categ] == null)
                 {

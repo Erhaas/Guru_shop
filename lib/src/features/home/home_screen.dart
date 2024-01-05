@@ -7,6 +7,7 @@ import 'package:guru_shop/src/core/routes/router.dart';
 import 'package:guru_shop/src/core/viewmodels/home_viewmodel.dart';
 import 'package:guru_shop/src/data.dart';
 import 'package:guru_shop/src/features/baseview.dart';
+import 'package:guru_shop/src/shared/components/carousel.dart';
 import 'package:guru_shop/src/shared/components/header_content.dart';
 import 'package:guru_shop/src/shared/components/input.dart';
 import 'package:guru_shop/src/shared/components/loading.dart';
@@ -69,39 +70,80 @@ class HomeScreen extends StatelessWidget {
                       padding: const EdgeInsets.fromLTRB(16.0, 0, 16, 16),
                       child: ListView(
                         children: [
-                          Container(
-                            height: 200,
-                            margin: const EdgeInsets.only(top: 16.0),
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(10)),
-                              image: DecorationImage(
-                                  image: AssetImage(Assets.images.promo1.path),
-                                  fit: BoxFit.fill),
-                              color: colorScheme.secondary,
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(20.0),
-                              child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "Super Flash Sale",
-                                      style: textTheme.displayLarge!.copyWith(
-                                          color: colorScheme.onPrimary),
-                                    ),
-                                    Expanded(
-                                      child: Text(
-                                        "50% Off",
+                          Carousel(items: [
+                            Container(
+                              height: 200,
+                              margin: const EdgeInsets.only(top: 16.0),
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                borderRadius:
+                                    const BorderRadius.all(Radius.circular(10)),
+                                image: DecorationImage(
+                                    image:
+                                        AssetImage(Assets.images.promo1.path),
+                                    fit: BoxFit.fill),
+                                color: colorScheme.secondary,
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(20.0),
+                                child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "Super Flash Sale",
                                         style: textTheme.displayLarge!.copyWith(
                                             color: colorScheme.onPrimary),
                                       ),
-                                    ),
-                                    const PromotionTime(),
-                                  ]),
+                                      Expanded(
+                                        child: Text(
+                                          "50% Off",
+                                          style: textTheme.displayLarge!
+                                              .copyWith(
+                                                  color: colorScheme.onPrimary),
+                                        ),
+                                      ),
+                                      const PromotionTime(),
+                                    ]),
+                              ),
                             ),
-                          ),
+                            Container(
+                              height: 200,
+                              margin: const EdgeInsets.only(top: 16.0),
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                borderRadius:
+                                    const BorderRadius.all(Radius.circular(10)),
+                                image: DecorationImage(
+                                    image:
+                                        AssetImage(Assets.images.promo1.path),
+                                    fit: BoxFit.fill),
+                                color: colorScheme.secondary,
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(20.0),
+                                child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "Super Flash Sale",
+                                        style: textTheme.displayLarge!.copyWith(
+                                            color: colorScheme.onPrimary),
+                                      ),
+                                      Expanded(
+                                        child: Text(
+                                          "50% Off",
+                                          style: textTheme.displayLarge!
+                                              .copyWith(
+                                                  color: colorScheme.onPrimary),
+                                        ),
+                                      ),
+                                      const PromotionTime(),
+                                    ]),
+                              ),
+                            ),
+                          ]),
                           ContentHeader(
                               title: "Category",
                               action: GestureDetector(

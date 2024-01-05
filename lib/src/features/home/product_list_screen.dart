@@ -1,8 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:guru_shop/gen/assets.gen.dart';
+import 'package:guru_shop/src/core/enum/viewstate.dart';
 import 'package:guru_shop/src/core/viewmodels/home_viewmodel.dart';
 import 'package:guru_shop/src/features/baseview.dart';
+import 'package:guru_shop/src/shared/components/loading.dart';
 import 'package:guru_shop/src/shared/components/product_cart.dart';
 
 @RoutePage()
@@ -75,18 +77,20 @@ class ProductListScreen extends StatelessWidget {
                             ]),
                       ),
                     ),
-                    GridView.count(
-                      shrinkWrap: true,
-                      childAspectRatio: 0.72,
-                      physics: const NeverScrollableScrollPhysics(),
-                      primary: false,
-                      mainAxisSpacing: 10,
-                      crossAxisCount: 2,
-                      children: <Widget>[
-                        for (final product in model.productList(category))
-                          ProductCard(product: product)
-                      ],
-                    ),
+                    model.state == ViewState.Busy
+                        ? const Loading()
+                        : GridView.count(
+                            shrinkWrap: true,
+                            childAspectRatio: 0.72,
+                            physics: const NeverScrollableScrollPhysics(),
+                            primary: false,
+                            mainAxisSpacing: 10,
+                            crossAxisCount: 2,
+                            children: <Widget>[
+                              for (final product in model.productList(category))
+                                ProductCard(product: product)
+                            ],
+                          ),
                   ],
                 ),
               ),

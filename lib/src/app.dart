@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:guru_shop/src/core/routes/router.dart';
-import 'package:guru_shop/src/shared/utils/theme/themes.dart';
 import 'package:provider/provider.dart';
+import 'package:guru_shop/src/core/routes/router.dart';
+import 'package:guru_shop/src/locator.dart';
+import 'package:guru_shop/src/shared/utils/theme/themes.dart';
+import 'package:guru_shop/src/core/viewmodels/product_viewmodel.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({
@@ -11,8 +13,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     AppRouter appRouter = AppRouter();
-    return Provider(
-      create: (BuildContext context) => "",
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+            create: (context) => locator<ProductViewModel>()),
+      ],
       child: MaterialApp.router(
         theme: lightThemeCustom(),
         routerConfig: appRouter.config(),
