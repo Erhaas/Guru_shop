@@ -5,6 +5,7 @@ import 'package:guru_shop/src/features/home/favorite_product_screen.dart';
 import 'package:guru_shop/src/features/home/home_screen.dart';
 import 'package:guru_shop/src/features/home/product_list_screen.dart';
 import 'package:guru_shop/src/features/login/login_screen.dart';
+import 'package:guru_shop/src/features/product_details/product_details_screen.dart';
 import 'package:guru_shop/src/features/register/register_screen.dart';
 import 'package:guru_shop/src/features/search/search.screen.dart';
 import 'package:guru_shop/src/features/settings/setting_screen.dart';
@@ -23,5 +24,6 @@ class AppRouter extends _$AppRouter {
         ]),
         AutoRoute(page: ProductListRoute.page),
         AutoRoute(page: FavoriteProductRoute.page),
+        AutoRoute(page: ProductDetailsRoute.page),
       ];
 }

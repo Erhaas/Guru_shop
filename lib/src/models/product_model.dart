@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:guru_shop/src/models/base_model.dart';
 
 class ProductModel extends BaseModel {
+  final String id;
   final String name;
   final String image;
   final String price;
@@ -11,15 +12,17 @@ class ProductModel extends BaseModel {
   final String discount;
 
   ProductModel(
-      {required this.name,
+      {required this.id,
+      required this.name,
       required this.image,
       this.price = '\$299,43',
-      this.stars = 0,
+      this.stars = 3,
       this.oldPrice = '\$534,33',
       this.discount = '24% Off'});
 
   factory ProductModel.fromJson(Map<String, dynamic> json) {
     return ProductModel(
+        id: json['id'],
         name: json['name'],
         image: json['image'],
         price: json['price'],

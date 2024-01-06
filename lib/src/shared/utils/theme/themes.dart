@@ -13,7 +13,8 @@ ThemeData lightThemeCustom() {
           surface: whiteColor,
           background: whiteColor,
           secondaryContainer: neuralGrey,
-          error: primaryRed),
+          error: primaryRed,
+          tertiary: primaryYellow),
       appBarTheme: const AppBarTheme(
           backgroundColor: whiteColor,
           iconTheme: IconThemeData(color: neuralDark),
@@ -22,7 +23,7 @@ ThemeData lightThemeCustom() {
           actionsIconTheme: IconThemeData(color: neuralGrey)),
       textTheme: textTheme(neuralDark),
       textSelectionTheme: const TextSelectionThemeData(cursorColor: neuralGrey),
-      iconTheme: IconThemeData(color: neuralGrey),
+      iconTheme: const IconThemeData(color: neuralGrey),
       elevatedButtonTheme: ElevatedButtonThemeData(
           style: ButtonStyle(
               backgroundColor: MaterialStateProperty.all<Color>(primaryBlue),

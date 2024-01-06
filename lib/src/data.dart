@@ -24,35 +24,61 @@ final List<CategoryModel> listCategories = [
 
 List<ProductModel> fsProducts = [
   ProductModel(
-      name: 'FS - Nike Air Max 270 React', image: Assets.images.shoe1.path),
-  ProductModel(name: 'FS - QUILTED MAXI CROS', image: Assets.images.bag1.path),
+      id: "1",
+      name: 'FS - Nike Air Max 270 React',
+      image: Assets.images.shoe1.path),
   ProductModel(
-      name: 'FS - Nike Air Max 270 React', image: Assets.images.shoe3.path),
+      id: "2", name: 'FS - QUILTED MAXI CROS', image: Assets.images.bag1.path),
   ProductModel(
-      name: 'FS - Nike Air Max 270 React', image: Assets.images.bag2.path),
+      id: "3",
+      name: 'FS - Nike Air Max 270 React',
+      image: Assets.images.shoe3.path),
   ProductModel(
-      name: 'FS - Nike Air Max 270 React', image: Assets.images.shoe4.path),
+      id: "4",
+      name: 'FS - Nike Air Max 270 React',
+      image: Assets.images.bag2.path),
+  ProductModel(
+      id: "5",
+      name: 'FS - Nike Air Max 270 React',
+      image: Assets.images.shoe4.path),
 ];
 
 List<ProductModel> msProducts = [
   ProductModel(
-      name: 'MS - Nike Air Max 270 React', image: Assets.images.shoe2.path),
-  ProductModel(name: 'FS - QUILTED MAXI CROS', image: Assets.images.shoe3.path),
+      id: "1",
+      name: 'MS - Nike Air Max 270 React',
+      image: Assets.images.shoe2.path),
   ProductModel(
-      name: 'MS - Nike Air Max 270 React', image: Assets.images.bag4.path),
+      id: "2",
+      name: 'MS - Nike Air Max 270 React',
+      image: Assets.images.bag4.path),
   ProductModel(
-      name: 'MS - Nike Air Max 270 React', image: Assets.images.bag2.path),
+      id: "3",
+      name: 'MS - Nike Air Max 270 React',
+      image: Assets.images.bag2.path),
   ProductModel(
-      name: 'MS - Nike Air Max 270 React', image: Assets.images.shoe4.path),
+      id: "4",
+      name: 'MS - Nike Air Max 270 React',
+      image: Assets.images.shoe4.path),
+  ProductModel(
+      id: "5", name: 'FS - QUILTED MAXI CROS', image: Assets.images.shoe3.path),
 ];
 
 List<ProductModel> list_products = [
   ProductModel(
-      name: 'Nike Air Max 270 React ENG', image: Assets.images.shoe1.path),
+      id: "1",
+      name: 'Nike Air Max 270 React ENG',
+      image: Assets.images.shoe1.path),
   ProductModel(
-      name: 'Nike Air Max 270 React ENG', image: Assets.images.shoe2.path),
+      id: "2",
+      name: 'Nike Air Max 270 React ENG',
+      image: Assets.images.shoe2.path),
   ProductModel(
-      name: 'Nike Air Max 270 React ENG', image: Assets.images.shoe3.path),
+      id: "3",
+      name: 'Nike Air Max 270 React ENG',
+      image: Assets.images.shoe3.path),
   ProductModel(
-      name: 'Nike Air Zoom Pegasus 36 Miami', image: Assets.images.shoe4.path),
+      id: "4",
+      name: 'Nike Air Zoom Pegasus 36 Miami',
+      image: Assets.images.shoe4.path),
 ];

@@ -1,22 +1,22 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:guru_shop/src/core/routes/router.dart';
 import 'package:guru_shop/src/models/product_model.dart';
 
 class ProductCard extends StatelessWidget {
-  const ProductCard({
-    super.key,
-    this.onTap,
-    required this.product,
-  });
+  const ProductCard({super.key, required this.product});
 
   final ProductModel product;
-  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
+    final router = AutoRouter.of(context);
     final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
     return InkWell(
-      onTap: onTap,
+      onTap: () {
+        router.push(ProductDetailsRoute(productId: product.id));
+      },
       child: Container(
         margin: const EdgeInsets.symmetric(horizontal: 5.0),
         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
