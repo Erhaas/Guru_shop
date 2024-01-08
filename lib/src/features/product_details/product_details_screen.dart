@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:guru_shop/src/data.dart';
 import 'package:provider/provider.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:guru_shop/src/core/enum/viewstate.dart';
@@ -7,6 +8,8 @@ import 'package:guru_shop/src/core/viewmodels/product_details_viewmodel.dart';
 import 'package:guru_shop/src/core/viewmodels/product_viewmodel.dart';
 import 'package:guru_shop/src/shared/components/carousel.dart';
 import 'package:guru_shop/src/shared/components/loading.dart';
+import 'package:guru_shop/src/shared/components/header_content.dart';
+import 'package:guru_shop/src/shared/components/product_cart.dart';
 
 @RoutePage()
 class ProductDetailsScreen extends StatelessWidget {
@@ -71,7 +74,7 @@ class ProductDetailsScreen extends StatelessWidget {
                               ))
                         ]),
                         Padding(
-                          padding: EdgeInsets.symmetric(
+                          padding: const EdgeInsets.symmetric(
                               horizontal: 16, vertical: 16),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -85,7 +88,7 @@ class ProductDetailsScreen extends StatelessWidget {
                                   )),
                                   IconButton(
                                       onPressed: () {},
-                                      icon: Icon(Icons.favorite_border))
+                                      icon: const Icon(Icons.favorite_border))
                                 ],
                               ),
                               Padding(
@@ -108,19 +111,190 @@ class ProductDetailsScreen extends StatelessWidget {
                                 ]),
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(bottom: 24),
+                                padding: const EdgeInsets.only(bottom: 0),
                                 child: Text(
                                   model.product.price,
-                                  style: textTheme.titleMedium!
-                                      .copyWith(color: colorScheme.primary),
+                                  style: textTheme.titleMedium!.copyWith(
+                                      color: colorScheme.primary,
+                                      fontWeight: FontWeight.w700),
                                 ),
-                              )
+                              ),
+                              const SelectSize(
+                                sizes: ["7", "6.5", "6", "5.5"],
+                              ),
+                              // const SizedBox(
+                              //   height: 24,
+                              // ),
+                              const SelectColor(
+                                colors: [
+                                  "red",
+                                  "blue",
+                                  "yellow",
+                                  "green",
+                                  "purple",
+                                ],
+                              ),
+                              ContentHeader(
+                                title: "Specification",
+                                child: Column(
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Text(
+                                          "Shown:",
+                                          style: textTheme.bodyMedium!.copyWith(
+                                              color: colorScheme.secondary),
+                                        ),
+                                        const Spacer(),
+                                        Text(
+                                            "Laser Blue/Anthracite/Watermelon/White",
+                                            style: textTheme.bodyMedium!
+                                                .copyWith(
+                                                    color:
+                                                        colorScheme.secondary)),
+                                      ],
+                                    ),
+                                    const SizedBox(height: 16),
+                                    Row(
+                                      children: [
+                                        Text("Style:",
+                                            style: textTheme.bodyMedium!
+                                                .copyWith(
+                                                    color:
+                                                        colorScheme.secondary)),
+                                        const Spacer(),
+                                        Text("CD0113-400",
+                                            style: textTheme.bodyMedium!
+                                                .copyWith(
+                                                    color:
+                                                        colorScheme.secondary)),
+                                      ],
+                                    ),
+                                    const SizedBox(height: 16),
+                                    Text(
+                                        "The Nike Air Max 270 React ENG combines a full-length React foam midsole with a 270 Max Air unit for unrivaled comfort and a striking visual experience.",
+                                        style: textTheme.bodyMedium!.copyWith(
+                                            color: colorScheme.secondary))
+                                  ],
+                                ),
+                              ),
+                              ContentHeader(
+                                  title: "You Might Also Like",
+                                  child: SizedBox(
+                                    height: 240,
+                                    child: ListView(
+                                      scrollDirection: Axis.horizontal,
+                                      children: [
+                                        for (final product in list_products)
+                                          SizedBox(
+                                              width: 160,
+                                              child:
+                                                  ProductCard(product: product))
+                                      ],
+                                    ),
+                                  )),
                             ],
                           ),
                         )
                       ],
                     ),
             ));
+  }
+}
+
+class SelectSize extends StatelessWidget {
+  const SelectSize({super.key, required this.sizes});
+
+  final List<String> sizes;
+
+  @override
+  Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    final colorScheme = Theme.of(context).colorScheme;
+
+    return ContentHeader(
+        title: "Select Size",
+        child: Row(
+          children: [
+            for (var size in sizes)
+              Padding(
+                padding: const EdgeInsets.only(right: 8.0),
+                child: InkWell(
+                  onTap: () {},
+                  child: Container(
+                    height: 48,
+                    width: 48,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(50.0)),
+                        border: Border.all(
+                            color: size == "6"
+                                ? colorScheme.primary
+                                : colorScheme.secondary,
+                            width: 1)),
+                    child: Text(size,
+                        style: textTheme.bodyMedium!
+                            .copyWith(fontWeight: FontWeight.w600)),
+                  ),
+                ),
+              ),
+          ],
+        ));
+  }
+}
+
+class SelectColor extends StatelessWidget {
+  const SelectColor({super.key, required this.colors});
+
+  final List<String> colors;
+
+  @override
+  Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    final colorScheme = Theme.of(context).colorScheme;
+
+    final Map<String, Color> colorsPanel = {
+      "red": Colors.redAccent,
+      "blue": Colors.blueAccent,
+      "yellow": Colors.yellowAccent,
+      "green": Colors.greenAccent,
+      "purple": Colors.purpleAccent,
+    };
+
+    return ContentHeader(
+        title: "Select Size",
+        child: Row(
+          children: [
+            for (var color in colors)
+              Padding(
+                padding: const EdgeInsets.only(right: 8.0),
+                child: InkWell(
+                  onTap: () {},
+                  child: Container(
+                    height: 48,
+                    width: 48,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      color: colorsPanel[color],
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(50.0)),
+                    ),
+                    child: Container(
+                      height: 15,
+                      width: 15,
+                      decoration: BoxDecoration(
+                        color:
+                            color == "red" ? Colors.white : Colors.transparent,
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(50.0)),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+          ],
+        ));
   }
 }
 

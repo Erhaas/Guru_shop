@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:guru_shop/src/shared/utils/theme/colors.dart';
 
 class Button extends StatelessWidget {
   const Button(
