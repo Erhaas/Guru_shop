@@ -8,8 +8,10 @@ import 'package:guru_shop/src/core/viewmodels/product_details_viewmodel.dart';
 import 'package:guru_shop/src/core/viewmodels/product_viewmodel.dart';
 import 'package:guru_shop/src/shared/components/carousel.dart';
 import 'package:guru_shop/src/shared/components/loading.dart';
+import 'package:guru_shop/src/shared/components/button.dart';
 import 'package:guru_shop/src/shared/components/header_content.dart';
 import 'package:guru_shop/src/shared/components/product_cart.dart';
+import 'package:guru_shop/src/shared/components/review_card.dart';
 
 @RoutePage()
 class ProductDetailsScreen extends StatelessWidget {
@@ -179,6 +181,15 @@ class ProductDetailsScreen extends StatelessWidget {
                                 ),
                               ),
                               ContentHeader(
+                                  title: "Reviews",
+                                  action: GestureDetector(
+                                    onTap: () => {},
+                                    child: Text('See More',
+                                        style: textTheme.bodyLarge!.copyWith(
+                                            color: colorScheme.primary)),
+                                  ),
+                                  child: const ReviewCard()),
+                              ContentHeader(
                                   title: "You Might Also Like",
                                   child: SizedBox(
                                     height: 240,
@@ -193,6 +204,19 @@ class ProductDetailsScreen extends StatelessWidget {
                                       ],
                                     ),
                                   )),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              SizedBox(
+                                width: double.infinity,
+                                height: 57,
+                                child: Button(
+                                  text: "Add To Cart In",
+                                  bgColor: colorScheme.primary,
+                                  color: colorScheme.surface,
+                                  onPressed: () => {},
+                                ),
+                              ),
                             ],
                           ),
                         )
