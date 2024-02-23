@@ -68,6 +68,19 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    ProductReviewsRoute.name: (routeData) {
+      final pathParams = routeData.inheritedPathParams;
+      final args = routeData.argsAs<ProductReviewsRouteArgs>(
+          orElse: () =>
+              ProductReviewsRouteArgs(productId: pathParams.getString('id')));
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: ProductReviewsScreen(
+          key: args.key,
+          productId: args.productId,
+        ),
+      );
+    },
     RegisterRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -228,6 +241,45 @@ class ProductListRouteArgs {
   @override
   String toString() {
     return 'ProductListRouteArgs{key: $key, category: $category, title: $title}';
+  }
+}
+
+/// generated route for
+/// [ProductReviewsScreen]
+class ProductReviewsRoute extends PageRouteInfo<ProductReviewsRouteArgs> {
+  ProductReviewsRoute({
+    Key? key,
+    required String productId,
+    List<PageRouteInfo>? children,
+  }) : super(
+          ProductReviewsRoute.name,
+          args: ProductReviewsRouteArgs(
+            key: key,
+            productId: productId,
+          ),
+          rawPathParams: {'id': productId},
+          initialChildren: children,
+        );
+
+  static const String name = 'ProductReviewsRoute';
+
+  static const PageInfo<ProductReviewsRouteArgs> page =
+      PageInfo<ProductReviewsRouteArgs>(name);
+}
+
+class ProductReviewsRouteArgs {
+  const ProductReviewsRouteArgs({
+    this.key,
+    required this.productId,
+  });
+
+  final Key? key;
+
+  final String productId;
+
+  @override
+  String toString() {
+    return 'ProductReviewsRouteArgs{key: $key, productId: $productId}';
   }
 }
 

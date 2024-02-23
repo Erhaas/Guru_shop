@@ -18,7 +18,7 @@ class ReviewCard extends StatelessWidget {
               height: 48,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage(Assets.images.shoe1.path),
+                    image: AssetImage(Assets.images.pic2.path),
                     fit: BoxFit.fill),
                 shape: BoxShape.circle,
               ),
@@ -65,7 +65,7 @@ class ReviewCard extends StatelessWidget {
           ],
         ),
         Padding(
-            padding: EdgeInsets.symmetric(vertical: 16.0),
+            padding: const EdgeInsets.symmetric(vertical: 16.0),
             child: Text(
                 "air max are always very comfortable fit, clean and just perfect in every way. just the box was too small and scrunched the sneakers up a little bit, not sure if the box was always this small but the 90s are and will always be one of my favorites.",
                 style: textTheme.bodySmall!

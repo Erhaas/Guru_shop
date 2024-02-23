@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:guru_shop/src/core/routes/router.dart';
 import 'package:guru_shop/src/data.dart';
 import 'package:provider/provider.dart';
 import 'package:auto_route/auto_route.dart';
@@ -23,6 +24,7 @@ class ProductDetailsScreen extends StatelessWidget {
   final String productId;
   @override
   Widget build(BuildContext context) {
+    final router = AutoRouter.of(context);
     final productModel = Provider.of<ProductViewModel>(context);
     final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
@@ -183,7 +185,10 @@ class ProductDetailsScreen extends StatelessWidget {
                               ContentHeader(
                                   title: "Reviews",
                                   action: GestureDetector(
-                                    onTap: () => {},
+                                    onTap: () => {
+                                      router.push(ProductReviewsRoute(
+                                          productId: productId))
+                                    },
                                     child: Text('See More',
                                         style: textTheme.bodyLarge!.copyWith(
                                             color: colorScheme.primary)),
@@ -211,10 +216,19 @@ class ProductDetailsScreen extends StatelessWidget {
                                 width: double.infinity,
                                 height: 57,
                                 child: Button(
-                                  text: "Add To Cart In",
-                                  bgColor: colorScheme.primary,
+                                  text: productModel.inCart(model.product)
+                                      ? "In Cart"
+                                      : "Add To Cart In",
+                                  bgColor: productModel.inCart(model.product)
+                                      ? colorScheme.secondary
+                                      : colorScheme.primary,
                                   color: colorScheme.surface,
-                                  onPressed: () => {},
+                                  onPressed: () => {
+                                    productModel.inCart(model.product)
+                                        ? productModel
+                                            .removeToCart(model.product)
+                                        : productModel.addToCart(model.product)
+                                  },
                                 ),
                               ),
                             ],

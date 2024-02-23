@@ -11,7 +11,7 @@ class ProductDetailsViewModel extends BaseViewModel {
   Future retrieveProduct(String id) async {
     setState(ViewState.Busy);
     Future.delayed(
-        const Duration(milliseconds: 3000),
+        const Duration(milliseconds: 1000),
         () => {
               _product = list_products.firstWhere((e) => e.id == id),
               setState(ViewState.Idle),

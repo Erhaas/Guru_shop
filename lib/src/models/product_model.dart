@@ -8,6 +8,7 @@ class ProductModel extends BaseModel {
   final String image;
   final String price;
   final int stars;
+  final int reviews;
   final String oldPrice;
   final String discount;
 
@@ -17,6 +18,7 @@ class ProductModel extends BaseModel {
       required this.image,
       this.price = '\$299,43',
       this.stars = 3,
+      this.reviews = 5,
       this.oldPrice = '\$534,33',
       this.discount = '24% Off'});
 
