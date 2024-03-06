@@ -8,6 +8,7 @@ class Input extends StatelessWidget {
     this.placeholder = "Placeholder text",
     this.autofocus = false,
     this.focusNode,
+    this.maxLines = 1,
     this.validator,
     this.suffixe,
     this.prefixe,
@@ -17,6 +18,7 @@ class Input extends StatelessWidget {
   final void Function(String)? onChanged;
   final String? placeholder;
   final bool? autofocus;
+  final int? maxLines;
   final FocusNode? focusNode;
   final String? Function(String?)? validator;
   final Widget? suffixe;
@@ -26,21 +28,28 @@ class Input extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       focusNode: focusNode,
+      maxLines: maxLines,
       onChanged: onChanged,
-      style: Theme.of(context).textTheme.bodySmall,
+      style: Theme.of(context).textTheme.bodyMedium,
       decoration: InputDecoration(
+        contentPadding:
+            const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
         floatingLabelBehavior: FloatingLabelBehavior.always,
         hintText: placeholder,
         suffixIconConstraints: const BoxConstraints(maxWidth: 50, minWidth: 20),
         prefixIconConstraints: const BoxConstraints(maxWidth: 50, minWidth: 20),
-        prefixIcon: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: prefixe,
-        ),
-        suffixIcon: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: suffixe,
-        ),
+        prefixIcon: suffixe != null
+            ? Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: prefixe,
+              )
+            : null,
+        suffixIcon: suffixe != null
+            ? Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: suffixe,
+              )
+            : null,
       ),
       validator: validator,
     );

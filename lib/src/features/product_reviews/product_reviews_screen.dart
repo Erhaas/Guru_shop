@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:guru_shop/src/shared/components/input.dart';
 import 'package:provider/provider.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:guru_shop/src/core/enum/viewstate.dart';
 import 'package:guru_shop/src/features/baseview.dart';
-import 'package:guru_shop/src/core/viewmodels/product_details_viewmodel.dart';
+import 'package:guru_shop/src/core/viewmodels/product_reviews_viewmodel.dart';
 import 'package:guru_shop/src/core/viewmodels/product_viewmodel.dart';
 import 'package:guru_shop/src/shared/components/loading.dart';
 import 'package:guru_shop/src/shared/components/button.dart';
@@ -24,52 +25,153 @@ class ProductReviewsScreen extends StatelessWidget {
     final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
 
-    return BaseView<ProductDetailsViewModel>(
+    return BaseView<ProductReviewsViewModel>(
         onModelReady: (model) => model.retrieveProduct(productId),
-        builder: (BuildContext context, ProductDetailsViewModel model,
+        builder: (BuildContext context, ProductReviewsViewModel model,
                 Widget? child) =>
             Scaffold(
               appBar: AppBar(
-                title: Text("${model.product.reviews}  Reviews",
+                title: Text(
+                    !model.addReview
+                        ? "${model.product.reviews}  Reviews"
+                        : "Write Review",
                     style: textTheme.bodyLarge),
                 elevation: 0.4,
                 centerTitle: false,
               ),
               body: model.state == ViewState.Busy
                   ? const Loading()
-                  : ListView(
-                      shrinkWrap: true,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 16, vertical: 16),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              for (final product in List<int>.generate(
-                                  model.product.reviews, (i) => i + 1))
-                                const Padding(
-                                  padding: EdgeInsets.symmetric(vertical: 10.0),
-                                  child: ReviewCard(),
-                                ),
-                              const SizedBox(
-                                height: 20,
+                  : !model.addReview
+                      ? ListView(
+                          shrinkWrap: true,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 16, vertical: 16),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  for (final product in List<int>.generate(
+                                      model.product.reviews, (i) => i + 1))
+                                    const Padding(
+                                      padding:
+                                          EdgeInsets.symmetric(vertical: 10.0),
+                                      child: ReviewCard(),
+                                    ),
+                                  const SizedBox(
+                                    height: 20,
+                                  ),
+                                  SizedBox(
+                                    width: double.infinity,
+                                    height: 57,
+                                    child: Button(
+                                      text: "Write Review",
+                                      bgColor: colorScheme.primary,
+                                      color: colorScheme.surface,
+                                      onPressed: () => {model.writeReview()},
+                                    ),
+                                  ),
+                                ],
                               ),
-                              SizedBox(
-                                width: double.infinity,
-                                height: 57,
-                                child: Button(
-                                  text: "Write Review",
-                                  bgColor: colorScheme.primary,
-                                  color: colorScheme.surface,
-                                  onPressed: () => {},
-                                ),
-                              ),
-                            ],
-                          ),
+                            )
+                          ],
                         )
-                      ],
-                    ),
+                      : ListView(
+                          shrinkWrap: true,
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 16, vertical: 16),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(bottom: 5),
+                                        child: Text(
+                                          "Please write Overall level of satisfaction with your shipping / Delivery Service",
+                                          style: textTheme.bodyMedium!.copyWith(
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            top: 5, bottom: 16),
+                                        child: Row(children: [
+                                          for (var i = 1; i <= 5; i++)
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  right: 2),
+                                              child: Icon(
+                                                i <= model.product.stars
+                                                    ? Icons.star
+                                                    : Icons.star_border,
+                                                size: 25,
+                                                color: i <= model.product.stars
+                                                    ? colorScheme.tertiary
+                                                    : colorScheme.secondary,
+                                              ),
+                                            )
+                                        ]),
+                                      ),
+                                    ],
+                                  ),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(bottom: 5),
+                                        child: Text(
+                                          "Write Your Review",
+                                          style: textTheme.bodyMedium!.copyWith(
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ),
+                                      const Input(
+                                        placeholder: 'Write you review here',
+                                        maxLines: 6,
+                                      ),
+                                    ],
+                                  ),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(bottom: 5),
+                                        child: Text(
+                                          "Add photo",
+                                          style: textTheme.bodyMedium!.copyWith(
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ),
+                                      Container(
+                                        height: 50,
+                                        width: 50,
+                                        decoration: BoxDecoration(
+                                            border: Border.all(
+                                                width: 0.3,
+                                                color: colorScheme.secondary),
+                                            borderRadius:
+                                                const BorderRadius.all(
+                                                    Radius.circular(10.0))),
+                                        child: const Center(
+                                            child: Icon(Icons.add)),
+                                      )
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
             ));
   }
 }
