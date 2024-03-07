@@ -214,7 +214,7 @@ class ProductDetailsScreen extends StatelessWidget {
                               ),
                               SizedBox(
                                 width: double.infinity,
-                                height: 57,
+                                height: 50,
                                 child: Button(
                                   text: productModel.inCart(model.product)
                                       ? "In Cart"

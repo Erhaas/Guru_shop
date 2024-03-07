@@ -1,3 +1,4 @@
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:guru_shop/src/shared/components/input.dart';
 import 'package:provider/provider.dart';
@@ -31,6 +32,12 @@ class ProductReviewsScreen extends StatelessWidget {
                 Widget? child) =>
             Scaffold(
               appBar: AppBar(
+                leading: IconButton(
+                  icon: Icon(Icons.arrow_back_ios, color: Colors.black),
+                  onPressed: () => !model.addReview
+                      ? Navigator.of(context).pop()
+                      : model.writeReview(),
+                ),
                 title: Text(
                     !model.addReview
                         ? "${model.product.reviews}  Reviews"
@@ -63,7 +70,7 @@ class ProductReviewsScreen extends StatelessWidget {
                                   ),
                                   SizedBox(
                                     width: double.infinity,
-                                    height: 57,
+                                    height: 50,
                                     child: Button(
                                       text: "Write Review",
                                       bgColor: colorScheme.primary,
@@ -80,7 +87,7 @@ class ProductReviewsScreen extends StatelessWidget {
                           shrinkWrap: true,
                           children: [
                             Padding(
-                              padding: EdgeInsets.symmetric(
+                              padding: const EdgeInsets.symmetric(
                                   horizontal: 16, vertical: 16),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -105,17 +112,36 @@ class ProductReviewsScreen extends StatelessWidget {
                                           for (var i = 1; i <= 5; i++)
                                             Padding(
                                               padding: const EdgeInsets.only(
-                                                  right: 2),
-                                              child: Icon(
-                                                i <= model.product.stars
-                                                    ? Icons.star
-                                                    : Icons.star_border,
-                                                size: 25,
-                                                color: i <= model.product.stars
-                                                    ? colorScheme.tertiary
-                                                    : colorScheme.secondary,
+                                                  right: 5),
+                                              child: IconButton(
+                                                padding: EdgeInsets.zero,
+                                                constraints: BoxConstraints(),
+                                                splashRadius: 0.2,
+                                                icon: Icon(
+                                                  i <= model.stars
+                                                      ? Icons.star
+                                                      : Icons.star_border,
+                                                  size: 25,
+                                                  color: i <= model.stars
+                                                      ? colorScheme.tertiary
+                                                      : colorScheme.secondary,
+                                                ),
+                                                onPressed: () {
+                                                  model.setStars = i;
+                                                },
                                               ),
-                                            )
+                                            ),
+                                          Padding(
+                                            padding: EdgeInsets.symmetric(
+                                                horizontal: 8, vertical: 6),
+                                            child: Text("${model.stars}/5",
+                                                style: textTheme.bodyMedium!
+                                                    .copyWith(
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        color: colorScheme
+                                                            .secondary)),
+                                          )
                                         ]),
                                       ),
                                     ],
@@ -144,27 +170,75 @@ class ProductReviewsScreen extends StatelessWidget {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Padding(
-                                        padding:
-                                            const EdgeInsets.only(bottom: 5),
+                                        padding: const EdgeInsets.only(
+                                            bottom: 5, top: 16),
                                         child: Text(
                                           "Add photo",
                                           style: textTheme.bodyMedium!.copyWith(
                                               fontWeight: FontWeight.bold),
                                         ),
                                       ),
+                                      Wrap(
+                                        runSpacing: 5,
+                                        spacing: 5,
+                                        children: [
+                                          for (final file in model.files)
+                                            Container(
+                                                height: 75,
+                                                width: 75,
+                                                decoration: BoxDecoration(
+                                                  border: Border.all(
+                                                      width: 0.3,
+                                                      color: colorScheme
+                                                          .secondary),
+                                                  borderRadius:
+                                                      const BorderRadius.all(
+                                                          Radius.circular(
+                                                              10.0)),
+                                                  image: DecorationImage(
+                                                      image: FileImage(file),
+                                                      fit: BoxFit.contain),
+                                                )),
+                                          Container(
+                                            height: 75,
+                                            width: 75,
+                                            decoration: BoxDecoration(
+                                                border: Border.all(
+                                                    width: 0.3,
+                                                    color:
+                                                        colorScheme.secondary),
+                                                borderRadius:
+                                                    const BorderRadius.all(
+                                                        Radius.circular(10.0))),
+                                            child: IconButton(
+                                              padding: EdgeInsets.zero,
+                                              icon: const Icon(Icons.add),
+                                              onPressed: () async {
+                                                var picked = await FilePicker
+                                                    .platform
+                                                    .pickFiles(
+                                                        type: FileType.image);
+                                                if (picked != null) {
+                                                  await model.addFile(
+                                                      picked.files.first);
+                                                }
+                                              },
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                       Container(
+                                        width: double.infinity,
                                         height: 50,
-                                        width: 50,
-                                        decoration: BoxDecoration(
-                                            border: Border.all(
-                                                width: 0.3,
-                                                color: colorScheme.secondary),
-                                            borderRadius:
-                                                const BorderRadius.all(
-                                                    Radius.circular(10.0))),
-                                        child: const Center(
-                                            child: Icon(Icons.add)),
-                                      )
+                                        margin: const EdgeInsets.only(top: 15),
+                                        child: Button(
+                                          text: "Send Review",
+                                          bgColor: colorScheme.primary,
+                                          color: colorScheme.surface,
+                                          onPressed: () =>
+                                              {model.writeReview()},
+                                        ),
+                                      ),
                                     ],
                                   ),
                                 ],
