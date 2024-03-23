@@ -52,7 +52,7 @@ class NotificationsScreen extends StatelessWidget {
                         ),
                         ListItem(
                           title: "Activity",
-                          onTap: () => {},
+                          onTap: () => {router.push(const ActivityRoute())},
                           leading: Icon(
                             Icons.notifications_outlined,
                             color: colorScheme.primary,

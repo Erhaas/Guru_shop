@@ -27,7 +27,7 @@ class OfferScreen extends StatelessWidget {
                   child: Padding(
                       padding: const EdgeInsets.symmetric(vertical: 20),
                       child: ListView(children: [
-                        for (var i = 1; i <= 3; i++)
+                        for (var i = 1; i <= 2; i++)
                           ListItem(
                             title: "SUMMER OFFER 98% Cashback",
                             leading: Icon(
