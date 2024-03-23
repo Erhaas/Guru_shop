@@ -11,6 +11,7 @@ class OfferScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    final colorScheme = Theme.of(context).colorScheme;
     return BaseView<LoginViewModel>(
         builder: (BuildContext context, LoginViewModel model, Widget? child) =>
             Scaffold(
@@ -29,7 +30,11 @@ class OfferScreen extends StatelessWidget {
                         for (var i = 1; i <= 3; i++)
                           ListItem(
                             title: "SUMMER OFFER 98% Cashback",
-                            icon: Icons.local_offer_outlined,
+                            leading: Icon(
+                              Icons.local_offer_outlined,
+                              color: colorScheme.primary,
+                              size: 25.0,
+                            ),
                             onTap: () => {},
                             subTitle: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,

@@ -12,6 +12,7 @@ class NotificationsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    final colorScheme = Theme.of(context).colorScheme;
     final router = AutoRouter.of(context);
 
     return BaseView<LoginViewModel>(
@@ -31,20 +32,32 @@ class NotificationsScreen extends StatelessWidget {
                       child: ListView(children: [
                         ListItem(
                           title: "Offer",
-                          icon: Icons.local_offer_outlined,
+                          leading: Icon(
+                            Icons.local_offer_outlined,
+                            color: colorScheme.primary,
+                            size: 25.0,
+                          ),
                           onTap: () => {router.push(const OfferRoute())},
                           trailing: const Badge(label: Text("2")),
                         ),
                         ListItem(
                           title: "Feed",
-                          icon: Icons.feed_outlined,
-                          onTap: () => {},
+                          leading: Icon(
+                            Icons.feed_outlined,
+                            color: colorScheme.primary,
+                            size: 25.0,
+                          ),
+                          onTap: () => {router.push(const FeedRoute())},
                           trailing: const Badge(label: Text("3")),
                         ),
                         ListItem(
                           title: "Activity",
                           onTap: () => {},
-                          icon: Icons.notifications_outlined,
+                          leading: Icon(
+                            Icons.notifications_outlined,
+                            color: colorScheme.primary,
+                            size: 25.0,
+                          ),
                           trailing: const Badge(label: Text("3")),
                         ),
                       ])),

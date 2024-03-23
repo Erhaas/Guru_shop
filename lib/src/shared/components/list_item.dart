@@ -7,7 +7,8 @@ class ListItem extends StatelessWidget {
     this.subTitle,
     this.verticalPadding,
     this.horizontalPadding,
-    required this.icon,
+    required this.leading,
+    this.minLeadingWidth = 40,
     this.labelStyle,
     this.onTap,
     this.trailing,
@@ -16,7 +17,8 @@ class ListItem extends StatelessWidget {
   final String title;
   final double? verticalPadding;
   final double? horizontalPadding;
-  final IconData icon;
+  final double? minLeadingWidth;
+  final Widget? leading;
   final TextStyle? labelStyle;
   final Widget? subTitle;
   final Widget? trailing;
@@ -45,11 +47,8 @@ class ListItem extends StatelessWidget {
               subTitle ?? SizedBox(),
             ],
           ),
-          leading: Icon(
-            icon,
-            color: colorScheme.primary,
-            size: 25.0,
-          ),
+          minLeadingWidth: minLeadingWidth,
+          leading: leading ?? SizedBox(),
           trailing: trailing),
     );
   }
