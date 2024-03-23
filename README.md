@@ -1,16 +1,18 @@
 # guru_shop
 
-A new Flutter project.
+GuruShop is a Flutter mobile application for E-commerce.
 
-## Getting Started
+The project was built using the [Flutter Provider Architecture]().
 
-This project is a starting point for a Flutter application.
+## Stacks
 
-A few resources to get you started if this is your first Flutter project:
+- Dart: 3.2.2
+- FLutter: 3.13.8
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Plugins
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Provider
+- Get_it
+- Auto_route
+- flutter_svg
+- flutter_get_runner

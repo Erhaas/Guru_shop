@@ -15,6 +15,12 @@ abstract class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
+    ActivityRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ActivityScreen(),
+      );
+    },
     BottomNavRouteWrapper.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -27,6 +33,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const FavoriteProductScreen(),
       );
     },
+    FeedRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const FeedScreen(),
+      );
+    },
     HomeRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -37,6 +49,18 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const LoginScreen(),
+      );
+    },
+    NotificationsRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const NotificationsScreen(),
+      );
+    },
+    OfferRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const OfferScreen(),
       );
     },
     ProductDetailsRoute.name: (routeData) {
@@ -103,6 +127,20 @@ abstract class _$AppRouter extends RootStackRouter {
 }
 
 /// generated route for
+/// [ActivityScreen]
+class ActivityRoute extends PageRouteInfo<void> {
+  const ActivityRoute({List<PageRouteInfo>? children})
+      : super(
+          ActivityRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ActivityRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [BottomNavScreenWrapper]
 class BottomNavRouteWrapper extends PageRouteInfo<void> {
   const BottomNavRouteWrapper({List<PageRouteInfo>? children})
@@ -131,6 +169,20 @@ class FavoriteProductRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [FeedScreen]
+class FeedRoute extends PageRouteInfo<void> {
+  const FeedRoute({List<PageRouteInfo>? children})
+      : super(
+          FeedRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'FeedRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [HomeScreen]
 class HomeRoute extends PageRouteInfo<void> {
   const HomeRoute({List<PageRouteInfo>? children})
@@ -154,6 +206,34 @@ class LoginRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'LoginRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [NotificationsScreen]
+class NotificationsRoute extends PageRouteInfo<void> {
+  const NotificationsRoute({List<PageRouteInfo>? children})
+      : super(
+          NotificationsRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'NotificationsRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [OfferScreen]
+class OfferRoute extends PageRouteInfo<void> {
+  const OfferRoute({List<PageRouteInfo>? children})
+      : super(
+          OfferRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'OfferRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

@@ -47,18 +47,19 @@ class HomeScreen extends StatelessWidget {
                   elevation: 0.4,
                   centerTitle: false,
                   actionsIconTheme: IconThemeData(color: colorScheme.secondary),
-                  actions: const [
-                    Padding(
-                      padding: EdgeInsets.all(4.0),
-                      child: Icon(
+                  actions: [
+                    IconButton(
+                      onPressed: () {},
+                      icon: const Icon(
                         Icons.favorite_outline,
-                        fill: 0.2,
                         size: 25,
                       ),
                     ),
-                    Padding(
-                      padding: EdgeInsets.all(4.0),
-                      child: Icon(
+                    IconButton(
+                      onPressed: () {
+                        router.push(const NotificationsRoute());
+                      },
+                      icon: const Icon(
                         Icons.notifications_outlined,
                         size: 25,
                       ),
