@@ -1,7 +1,11 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:guru_shop/src/core/viewmodels/login_viewmodel.dart';
+import 'package:guru_shop/src/data.dart';
 import 'package:guru_shop/src/features/baseview.dart';
+import 'package:guru_shop/src/shared/components/category_item.dart';
+import 'package:guru_shop/src/shared/components/header_content.dart';
+import 'package:guru_shop/src/shared/components/input.dart';
 
 @RoutePage()
 class SearchScreen extends StatelessWidget {
@@ -9,13 +13,56 @@ class SearchScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    final textTheme = Theme.of(context).textTheme;
     return BaseView<LoginViewModel>(
         builder: (BuildContext context, LoginViewModel model, Widget? child) =>
             Scaffold(
-                backgroundColor: Theme.of(context).colorScheme.background,
-                body: const Center(
-                    child: SingleChildScrollView(
-                  child: Placeholder(),
-                ))));
+                appBar: AppBar(
+                    title: Input(
+                      prefixe: Icon(
+                        Icons.search,
+                        color: colorScheme.primary,
+                      ),
+                      placeholder: 'Search',
+                      suffixe: Icon(
+                        Icons.close,
+                        color: colorScheme.secondary,
+                      ),
+                    ),
+                    leadingWidth: 200,
+                    automaticallyImplyLeading: false,
+                    elevation: 0.4,
+                    centerTitle: false,
+                    actionsIconTheme:
+                        IconThemeData(color: colorScheme.secondary),
+                    actions: [
+                      IconButton(
+                        padding: EdgeInsets.zero,
+                        constraints: const BoxConstraints(),
+                        onPressed: () {},
+                        icon: const Icon(
+                          Icons.mic,
+                          size: 25,
+                        ),
+                      ),
+                    ]),
+                body: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  child: ListView(
+                    children: [
+                      ContentHeader(
+                          title: "Man Fashion",
+                          child: Wrap(
+                            children: [
+                              for (final category in listCategories)
+                                CategoryItem(
+                                    label: category.label,
+                                    image: category.image)
+                            ],
+                          ))
+                    ],
+                  ),
+                )));
   }
 }
