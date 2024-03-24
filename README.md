@@ -4,6 +4,8 @@ GuruShop is a Flutter mobile application for E-commerce.
 
 The project was built using the [Flutter Provider Architecture]().
 
+Credit to [Derlaxy](https://derlaxy.gumroad.com/) for the design.
+
 ## Stacks
 
 - Dart: 3.2.2

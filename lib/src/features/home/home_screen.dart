@@ -6,8 +6,8 @@ import 'package:guru_shop/src/core/routes/router.dart';
 import 'package:guru_shop/src/core/viewmodels/home_viewmodel.dart';
 import 'package:guru_shop/src/data.dart';
 import 'package:guru_shop/src/features/baseview.dart';
-import 'package:guru_shop/src/features/settings/setting_screen.dart';
 import 'package:guru_shop/src/shared/components/carousel.dart';
+import 'package:guru_shop/src/shared/components/category_item.dart';
 import 'package:guru_shop/src/shared/components/header_content.dart';
 import 'package:guru_shop/src/shared/components/input.dart';
 import 'package:guru_shop/src/shared/components/loading.dart';
@@ -166,9 +166,13 @@ class HomeScreen extends StatelessWidget {
                                   scrollDirection: Axis.horizontal,
                                   children: [
                                     for (final category in listCategories)
-                                      CategoryItem(
-                                          label: category.label,
-                                          image: category.image),
+                                      Container(
+                                        width: 70,
+                                        margin: EdgeInsets.only(right: 5),
+                                        child: CategoryItem(
+                                            label: category.label,
+                                            image: category.image),
+                                      )
                                   ],
                                 ),
                               )),

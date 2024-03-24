@@ -7,6 +7,7 @@ import 'package:guru_shop/src/core/routes/router.dart';
 import 'package:guru_shop/src/core/viewmodels/home_viewmodel.dart';
 import 'package:guru_shop/src/data.dart';
 import 'package:guru_shop/src/features/baseview.dart';
+import 'package:guru_shop/src/shared/components/category_item.dart';
 import 'package:guru_shop/src/shared/components/header_content.dart';
 import 'package:guru_shop/src/shared/components/input.dart';
 import 'package:guru_shop/src/shared/components/loading.dart';
@@ -255,58 +256,6 @@ class SettingScreen extends StatelessWidget {
                       ),
                     ),
             ));
-  }
-}
-
-class CategoryItem extends StatelessWidget {
-  const CategoryItem({
-    super.key,
-    required this.label,
-    required this.image,
-  });
-
-  final String image;
-  final String label;
-
-  @override
-  Widget build(BuildContext context) {
-    // var size = MediaQuery.of(context).size;
-
-    return InkWell(
-        onTap: () => '',
-        child: Container(
-          width: 80,
-          padding: EdgeInsets.symmetric(vertical: 3),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Container(
-                  height: 70,
-                  width: double.infinity,
-                  margin: const EdgeInsets.symmetric(horizontal: 5),
-                  padding: const EdgeInsets.all(20),
-                  decoration: BoxDecoration(
-                      border: Border.all(
-                          width: 0.3,
-                          color: Theme.of(context).colorScheme.secondary),
-                      borderRadius:
-                          const BorderRadius.all(Radius.circular(150.0))),
-                  child: SvgPicture.asset(
-                    image,
-                    color: Theme.of(context).colorScheme.primary,
-                  )),
-              const Padding(
-                padding: EdgeInsets.symmetric(vertical: 3.0),
-              ),
-              Text(
-                label,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-                style: Theme.of(context).textTheme.bodySmall,
-              ),
-            ],
-          ),
-        ));
   }
 }
 

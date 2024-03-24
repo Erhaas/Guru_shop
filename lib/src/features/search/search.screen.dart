@@ -15,6 +15,10 @@ class SearchScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
+
+    var size = MediaQuery.of(context).size;
+    final double width = size.width;
+
     return BaseView<LoginViewModel>(
         builder: (BuildContext context, LoginViewModel model, Widget? child) =>
             Scaffold(
@@ -53,7 +57,29 @@ class SearchScreen extends StatelessWidget {
                     children: [
                       ContentHeader(
                           title: "Man Fashion",
-                          child: Wrap(
+                          child: GridView.count(
+                            physics: const NeverScrollableScrollPhysics(),
+                            shrinkWrap: true,
+                            childAspectRatio: 0.55,
+                            crossAxisSpacing: 5,
+                            mainAxisSpacing: 5,
+                            crossAxisCount: ((width / 70) as double).floor(),
+                            children: [
+                              for (final category in listCategories)
+                                CategoryItem(
+                                    label: category.label,
+                                    image: category.image)
+                            ],
+                          )),
+                      ContentHeader(
+                          title: "Woman Fashion",
+                          child: GridView.count(
+                            physics: const NeverScrollableScrollPhysics(),
+                            shrinkWrap: true,
+                            childAspectRatio: 0.55,
+                            crossAxisSpacing: 5,
+                            mainAxisSpacing: 5,
+                            crossAxisCount: ((width / 70) as double).floor(),
                             children: [
                               for (final category in listCategories)
                                 CategoryItem(

@@ -13,27 +13,23 @@ class CategoryItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // var size = MediaQuery.of(context).size;
     final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
     return InkWell(
         onTap: () => '',
         child: Container(
-          width: 80,
           padding: EdgeInsets.symmetric(vertical: 3),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
-                  height: 70,
                   width: double.infinity,
-                  margin: const EdgeInsets.symmetric(horizontal: 5),
                   padding: const EdgeInsets.all(20),
                   decoration: BoxDecoration(
-                      border:
-                          Border.all(width: 0.3, color: colorScheme.secondary),
-                      borderRadius:
-                          const BorderRadius.all(Radius.circular(150.0))),
+                    border:
+                        Border.all(width: 0.3, color: colorScheme.secondary),
+                    shape: BoxShape.circle,
+                  ),
                   child: SvgPicture.asset(
                     image,
                     color: colorScheme.primary,
