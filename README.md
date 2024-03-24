@@ -18,3 +18,12 @@ Credit to [Derlaxy](https://derlaxy.gumroad.com/) for the design.
 - Auto_route
 - flutter_svg
 - flutter_get_runner
+
+## Preview
+![login](./images/login.png)
+![login](./images/register.png)
+![login](./images/home.png)
+![login](./images/detail-product.png)
+![login](./images/reviews-product.png)
+![login](./images/notifications.png)
+![login](./images/explore.png)
