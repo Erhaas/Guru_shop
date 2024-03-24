@@ -11,7 +11,7 @@ import 'package:guru_shop/src/shared/components/category_item.dart';
 import 'package:guru_shop/src/shared/components/header_content.dart';
 import 'package:guru_shop/src/shared/components/input.dart';
 import 'package:guru_shop/src/shared/components/loading.dart';
-import 'package:guru_shop/src/shared/components/product_cart.dart';
+import 'package:guru_shop/src/shared/components/product_list.dart';
 
 @RoutePage()
 class HomeScreen extends StatelessWidget {
@@ -189,18 +189,22 @@ class HomeScreen extends StatelessWidget {
                                         .copyWith(color: colorScheme.primary)),
                               ),
                               child: SizedBox(
-                                height: 240,
-                                child: ListView(
-                                  scrollDirection: Axis.horizontal,
-                                  children: [
-                                    for (final product
-                                        in model.productList('flash_sale'))
-                                      SizedBox(
-                                          width: 160,
-                                          child: ProductCard(product: product))
-                                  ],
-                                ),
-                              )),
+                                  height: 240,
+                                  child: ProductList(
+                                    products: model.productList('flash_sale'),
+                                    direction: Axis.horizontal,
+                                  ))
+                              // ListView(
+                              //   scrollDirection: Axis.horizontal,
+                              //   children: [
+                              //     for (final product
+                              //         in model.productList('flash_sale'))
+                              //       SizedBox(
+                              //           width: 160,
+                              //           child: ProductCard(product: product))
+                              //   ],
+                              // ),
+                              ),
                           ContentHeader(
                               title: "Mega Sale",
                               action: GestureDetector(
@@ -214,18 +218,11 @@ class HomeScreen extends StatelessWidget {
                                         .copyWith(color: colorScheme.primary)),
                               ),
                               child: SizedBox(
-                                height: 240,
-                                child: ListView(
-                                  scrollDirection: Axis.horizontal,
-                                  children: [
-                                    for (final product
-                                        in model.productList('mega_sale'))
-                                      SizedBox(
-                                          width: 160,
-                                          child: ProductCard(product: product))
-                                  ],
-                                ),
-                              )),
+                                  height: 240,
+                                  child: ProductList(
+                                    products: model.productList('mega_sale'),
+                                    direction: Axis.horizontal,
+                                  ))),
                           Container(
                             height: 200,
                             margin: const EdgeInsets.symmetric(vertical: 16.0),
@@ -259,18 +256,10 @@ class HomeScreen extends StatelessWidget {
                                   ]),
                             ),
                           ),
-                          GridView.count(
-                            shrinkWrap: true,
-                            childAspectRatio: 0.72,
-                            physics: const NeverScrollableScrollPhysics(),
-                            primary: false,
-                            mainAxisSpacing: 10,
-                            crossAxisCount: 2,
-                            children: <Widget>[
-                              for (final product in model.products)
-                                ProductCard(product: product)
-                            ],
-                          ),
+                          ProductList(
+                            products: model.products,
+                            direction: Axis.vertical,
+                          )
                         ],
                       ),
                     ),

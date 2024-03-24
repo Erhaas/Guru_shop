@@ -5,7 +5,7 @@ class Button extends StatelessWidget {
       {super.key,
       this.onPressed,
       required this.text,
-      this.raduis = 5.00,
+      this.radius = 5.00,
       this.textSize = 15.00,
       this.bgColor,
       this.color,
@@ -14,7 +14,7 @@ class Button extends StatelessWidget {
 
   final String text;
   final VoidCallback? onPressed;
-  final double raduis;
+  final double radius;
   final double textSize;
   final Color? bgColor;
   final Color? color;
@@ -34,7 +34,7 @@ class Button extends StatelessWidget {
               TextStyle(color: color ?? Theme.of(context).colorScheme.primary)),
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
               RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(raduis),
+                  borderRadius: BorderRadius.circular(radius),
                   side: BorderSide(
                       width: bgColor != null ? 0 : 0.2,
                       color: bgColor != null

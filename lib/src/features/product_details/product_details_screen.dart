@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:guru_shop/src/core/routes/router.dart';
 import 'package:guru_shop/src/data.dart';
+import 'package:guru_shop/src/shared/components/product_list.dart';
 import 'package:provider/provider.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:guru_shop/src/core/enum/viewstate.dart';
@@ -197,18 +198,11 @@ class ProductDetailsScreen extends StatelessWidget {
                               ContentHeader(
                                   title: "You Might Also Like",
                                   child: SizedBox(
-                                    height: 240,
-                                    child: ListView(
-                                      scrollDirection: Axis.horizontal,
-                                      children: [
-                                        for (final product in list_products)
-                                          SizedBox(
-                                              width: 160,
-                                              child:
-                                                  ProductCard(product: product))
-                                      ],
-                                    ),
-                                  )),
+                                      height: 240,
+                                      child: ProductList(
+                                        products: list_products,
+                                        direction: Axis.horizontal,
+                                      ))),
                               const SizedBox(
                                 height: 20,
                               ),
@@ -222,7 +216,7 @@ class ProductDetailsScreen extends StatelessWidget {
                                   bgColor: productModel.inCart(model.product)
                                       ? colorScheme.secondary
                                       : colorScheme.primary,
-                                  color: colorScheme.surface,
+                                  color: colorScheme.onPrimary,
                                   onPressed: () => {
                                     productModel.inCart(model.product)
                                         ? productModel

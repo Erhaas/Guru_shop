@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:guru_shop/src/core/viewmodels/login_viewmodel.dart';
 import 'package:guru_shop/src/data.dart';
 import 'package:guru_shop/src/features/baseview.dart';
+import 'package:guru_shop/src/shared/components/alert.dart';
 import 'package:guru_shop/src/shared/components/category_item.dart';
 import 'package:guru_shop/src/shared/components/header_content.dart';
 import 'package:guru_shop/src/shared/components/input.dart';
+import 'package:guru_shop/src/shared/components/product_list.dart';
 
 @RoutePage()
 class SearchScreen extends StatelessWidget {
@@ -53,7 +55,15 @@ class SearchScreen extends StatelessWidget {
                     ]),
                 body: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                  child: ListView(
+                  child:
+
+                      // Alert(
+                      //   icon: Icons.close,
+                      //   title: "Product Not Found",
+                      //   description: "thank you for shopping using Guru Shop",
+                      //   label: "Back to Home",
+                      // )
+                      ListView(
                     children: [
                       ContentHeader(
                           title: "Man Fashion",
@@ -86,7 +96,12 @@ class SearchScreen extends StatelessWidget {
                                     label: category.label,
                                     image: category.image)
                             ],
-                          ))
+                          )
+                          //  ProductList(
+                          //   products: list_products,
+                          //   direction: Axis.vertical,
+                          // )
+                          )
                     ],
                   ),
                 )));
