@@ -21,9 +21,9 @@ Credit to [Derlaxy](https://derlaxy.gumroad.com/) for the design.
 
 ## Preview
 ![login](./images/login.png)
-![login](./images/register.png)
-![login](./images/home.png)
-![login](./images/detail-product.png)
-![login](./images/reviews-product.png)
-![login](./images/notifications.png)
-![login](./images/explore.png)
+![register](./images/register.png)
+![home](./images/home.png)
+![detail-product](./images/detail-product.png)
+![reviews-product](./images/reviews-product.png)
+![notifications](./images/notifications.png)
+![explore](./images/explore.png)
