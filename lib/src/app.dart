@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
             create: (context) => locator<ProductViewModel>()),
       ],
       child: MaterialApp.router(
+        debugShowCheckedModeBanner: false,
         theme: lightThemeCustom(),
         routerConfig: appRouter.config(),
       ),

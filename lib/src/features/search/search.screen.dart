@@ -55,15 +55,7 @@ class SearchScreen extends StatelessWidget {
                     ]),
                 body: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                  child:
-
-                      // Alert(
-                      //   icon: Icons.close,
-                      //   title: "Product Not Found",
-                      //   description: "thank you for shopping using Guru Shop",
-                      //   label: "Back to Home",
-                      // )
-                      ListView(
+                  child: ListView(
                     children: [
                       ContentHeader(
                           title: "Man Fashion",
@@ -81,29 +73,76 @@ class SearchScreen extends StatelessWidget {
                                     image: category.image)
                             ],
                           )),
-                      ContentHeader(
-                          title: "Woman Fashion",
-                          child: GridView.count(
-                            physics: const NeverScrollableScrollPhysics(),
-                            shrinkWrap: true,
-                            childAspectRatio: 0.55,
-                            crossAxisSpacing: 5,
-                            mainAxisSpacing: 5,
-                            crossAxisCount: ((width / 70) as double).floor(),
-                            children: [
-                              for (final category in listCategories)
-                                CategoryItem(
-                                    label: category.label,
-                                    image: category.image)
-                            ],
-                          )
-                          //  ProductList(
-                          //   products: list_products,
-                          //   direction: Axis.vertical,
-                          // )
-                          )
+                      SearchResult()
                     ],
                   ),
                 )));
+  }
+}
+
+class SearchResult extends StatefulWidget {
+  const SearchResult({super.key});
+  @override
+  State<SearchResult> createState() => _SearchResultState();
+}
+
+class _SearchResultState extends State<SearchResult> {
+  bool show = true;
+  @override
+  Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    final colorScheme = Theme.of(context).colorScheme;
+
+    return Container(
+      margin: const EdgeInsets.only(top: 24, bottom: 6),
+      child: Column(
+        children: [
+          InkWell(
+              onTap: () {
+                setState(() {
+                  show = !show;
+                });
+              },
+              child: Row(
+                children: [
+                  Expanded(
+                      child: Text(
+                    "145 result",
+                    style: textTheme.bodyMedium!.copyWith(
+                        fontWeight: FontWeight.w600,
+                        color: colorScheme.secondary),
+                  )),
+                  Row(
+                    children: [
+                      Text(
+                        "Man Shoes",
+                        style: textTheme.bodyMedium!
+                            .copyWith(fontWeight: FontWeight.w600),
+                      ),
+                      Icon(
+                        show ? Icons.arrow_drop_up : Icons.arrow_drop_down,
+                        size: 20,
+                      )
+                    ],
+                  )
+                ],
+              )),
+          if (show)
+            Padding(
+              padding: const EdgeInsets.only(top: 12.0),
+              child: ProductList(
+                products: list_products,
+                direction: Axis.vertical,
+              ),
+              //  Alert(
+              //   icon: Icons.close,
+              //   title: "Product Not Found",
+              //   description: "thank you for shopping using Guru Shop",
+              //   label: "Back to Home",
+              // )
+            )
+        ],
+      ),
+    );
   }
 }
