@@ -41,7 +41,7 @@ class CategoryItem extends StatelessWidget {
                 overflow: TextOverflow.ellipsis,
                 style: textTheme.bodySmall!.copyWith(
                     fontWeight: FontWeight.normal,
-                    color: colorScheme.secondaryContainer),
+                    color: colorScheme.secondary),
               ),
             ],
           ),

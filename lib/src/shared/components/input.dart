@@ -42,7 +42,7 @@ class Input extends StatelessWidget {
         hintText: placeholder,
         suffixIconConstraints: const BoxConstraints(maxWidth: 50, minWidth: 20),
         prefixIconConstraints: const BoxConstraints(maxWidth: 50, minWidth: 20),
-        prefixIcon: suffixe != null
+        prefixIcon: prefixe != null
             ? Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: prefixe,

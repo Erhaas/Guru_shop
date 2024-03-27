@@ -12,6 +12,7 @@ class BottomNavScreenWrapper extends StatelessWidget {
         routes: const [
           HomeRoute(),
           SearchRoute(),
+          CartRoute(),
         ],
         bottomNavigationBuilder: (_, tabsRouter) {
           return BottomNavigationBar(
@@ -21,6 +22,8 @@ class BottomNavScreenWrapper extends StatelessWidget {
               BottomNavigationBarItem(label: 'Home', icon: Icon(Icons.home)),
               BottomNavigationBarItem(
                   label: 'Explore', icon: Icon(Icons.search)),
+              BottomNavigationBarItem(
+                  label: 'Cart', icon: Icon(Icons.shopping_cart))
             ],
           );
         });

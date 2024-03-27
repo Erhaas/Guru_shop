@@ -38,8 +38,8 @@ class RegisterScreen extends StatelessWidget {
                           padding: const EdgeInsets.only(top: 8, bottom: 28),
                           child: Text(
                             'Create a new account',
-                            style: textTheme.bodyMedium!.copyWith(
-                                color: colorScheme.secondaryContainer),
+                            style: textTheme.bodyMedium!
+                                .copyWith(color: colorScheme.secondary),
                           ),
                         ),
                         const Input(

@@ -12,7 +12,7 @@ ThemeData lightThemeCustom() {
           secondary: neuralGrey,
           surface: whiteColor,
           background: whiteColor,
-          secondaryContainer: neuralGrey,
+          secondaryContainer: neuralLight,
           error: primaryRed,
           tertiary: primaryYellow),
       appBarTheme: const AppBarTheme(

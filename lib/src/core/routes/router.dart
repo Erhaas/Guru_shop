@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:guru_shop/src/core/routes/layouts/bottom_nav_wrapper.dart';
+import 'package:guru_shop/src/features/cart/cart.screen.dart';
 import 'package:guru_shop/src/features/home/favorite_product_screen.dart';
 import 'package:guru_shop/src/features/home/home_screen.dart';
 import 'package:guru_shop/src/features/home/product_list_screen.dart';
@@ -25,7 +26,8 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: RegisterRoute.page),
         AutoRoute(page: BottomNavRouteWrapper.page, initial: true, children: [
           AutoRoute(page: HomeRoute.page),
-          AutoRoute(page: SearchRoute.page)
+          AutoRoute(page: SearchRoute.page),
+          AutoRoute(page: CartRoute.page)
         ]),
         AutoRoute(page: ProductListRoute.page),
         AutoRoute(page: FavoriteProductRoute.page),

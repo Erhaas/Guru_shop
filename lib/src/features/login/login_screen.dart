@@ -38,8 +38,8 @@ class LoginScreen extends StatelessWidget {
                           padding: const EdgeInsets.only(top: 8, bottom: 28),
                           child: Text(
                             'Sign in to continue',
-                            style: textTheme.bodyMedium!.copyWith(
-                                color: colorScheme.secondaryContainer),
+                            style: textTheme.bodyMedium!
+                                .copyWith(color: colorScheme.secondary),
                           ),
                         ),
                         const Input(
@@ -69,17 +69,21 @@ class LoginScreen extends StatelessWidget {
                         ),
                         Row(
                           children: [
-                            const Expanded(
-                              child: Divider(),
+                            Expanded(
+                              child: Divider(
+                                color: colorScheme.secondaryContainer,
+                              ),
                             ),
                             Padding(
                               padding: const EdgeInsets.all(16),
                               child: Text("OR",
-                                  style: textTheme.bodyMedium!.copyWith(
-                                      color: colorScheme.secondaryContainer)),
+                                  style: textTheme.bodyMedium!
+                                      .copyWith(color: colorScheme.secondary)),
                             ),
-                            const Expanded(
-                              child: Divider(),
+                            Expanded(
+                              child: Divider(
+                                color: colorScheme.secondaryContainer,
+                              ),
                             ),
                           ],
                         ),
