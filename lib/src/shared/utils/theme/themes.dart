@@ -3,6 +3,8 @@ import 'package:guru_shop/gen/fonts.gen.dart';
 import 'package:guru_shop/src/shared/utils/common.dart';
 import 'package:guru_shop/src/shared/utils/theme/colors.dart';
 
+import '../constant.dart';
+
 ThemeData lightThemeCustom() {
   return ThemeData.light().copyWith(
       primaryColor: primaryBlue,
@@ -29,34 +31,44 @@ ThemeData lightThemeCustom() {
               backgroundColor: MaterialStateProperty.all<Color>(primaryBlue),
               textStyle: MaterialStateProperty.all<TextStyle>(
                   const TextStyle(color: whiteColor)))),
-      inputDecorationTheme: const InputDecorationTheme(
-          contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 15),
+      inputDecorationTheme: InputDecorationTheme(
+          contentPadding:
+              const EdgeInsets.symmetric(vertical: 0, horizontal: 15),
           fillColor: whiteColor,
           prefixIconColor: neuralGrey,
           suffixIconColor: neuralGrey,
-          helperStyle: TextStyle(
+          helperStyle: const TextStyle(
               fontSize: 15,
               color: neuralGrey,
               fontFamily: FontFamily.poppins,
               fontWeight: FontWeight.w200),
-          hintStyle: TextStyle(
+          hintStyle: const TextStyle(
               fontSize: 12,
               color: neuralGrey,
               fontFamily: FontFamily.poppins,
               fontWeight: FontWeight.normal),
-          labelStyle: TextStyle(
+          labelStyle: const TextStyle(
               fontSize: 15, color: neuralGrey, fontWeight: FontWeight.w300),
-          errorStyle: TextStyle(color: primaryRed),
+          errorStyle:
+              const TextStyle(color: primaryRed, fontWeight: FontWeight.normal),
           errorBorder: OutlineInputBorder(
-            borderSide: BorderSide(width: 1.5, color: primaryRed),
-            borderRadius: BorderRadius.all(Radius.circular(5.0)),
+            borderSide: const BorderSide(width: 1.5, color: primaryRed),
+            borderRadius:
+                BorderRadius.all(Radius.circular(Constants.radiusMedium)),
           ),
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(width: 1.5, color: primaryBlue),
-            borderRadius: BorderRadius.all(Radius.circular(5.0)),
+            borderSide: const BorderSide(width: 1.5, color: primaryBlue),
+            borderRadius:
+                BorderRadius.all(Radius.circular(Constants.radiusMedium)),
+          ),
+          focusedErrorBorder: OutlineInputBorder(
+            borderSide: const BorderSide(width: 1.5, color: primaryRed),
+            borderRadius:
+                BorderRadius.all(Radius.circular(Constants.radiusMedium)),
           ),
           enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(width: 1.5, color: neuralLight),
-            borderRadius: BorderRadius.all(Radius.circular(5.00)),
+            borderSide: const BorderSide(width: 1.5, color: neuralLight),
+            borderRadius:
+                BorderRadius.all(Radius.circular(Constants.radiusMedium)),
           )));
 }

@@ -30,6 +30,7 @@ class Input extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller,
+      validator: validator,
       focusNode: focusNode,
       maxLines: maxLines,
       onChanged: onChanged,
@@ -43,19 +44,18 @@ class Input extends StatelessWidget {
         suffixIconConstraints: const BoxConstraints(maxWidth: 50, minWidth: 20),
         prefixIconConstraints: const BoxConstraints(maxWidth: 50, minWidth: 20),
         prefixIcon: prefixe != null
-            ? Padding(
-                padding: const EdgeInsets.all(8.0),
+            ? Container(
+                alignment: Alignment.center,
                 child: prefixe,
               )
             : null,
         suffixIcon: suffixe != null
-            ? Padding(
-                padding: const EdgeInsets.all(8.0),
+            ? Container(
+                alignment: Alignment.center,
                 child: suffixe,
               )
             : null,
       ),
-      validator: validator,
     );
   }
 }

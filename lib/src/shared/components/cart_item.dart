@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:guru_shop/src/models/cart_model.dart';
+import 'package:guru_shop/src/shared/utils/constant.dart';
 
 class CartItem extends StatelessWidget {
   const CartItem({
@@ -27,7 +28,7 @@ class CartItem extends StatelessWidget {
         horizontal: 15,
       ),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8.0),
+        borderRadius: BorderRadius.circular(Constants.radiusMedium),
         border: Border.all(
           color: colorScheme.secondaryContainer,
         ),
@@ -37,7 +38,8 @@ class CartItem extends StatelessWidget {
         children: [
           Container(
             decoration: BoxDecoration(
-                borderRadius: const BorderRadius.all(Radius.circular(5)),
+                borderRadius:
+                    BorderRadius.all(Radius.circular(Constants.radiusMedium)),
                 image: DecorationImage(
                     image: AssetImage(cartProduct.product.image),
                     fit: BoxFit.fill)),
@@ -55,7 +57,7 @@ class CartItem extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
-                      constraints: BoxConstraints(maxWidth: 140),
+                      constraints: const BoxConstraints(maxWidth: 140),
                       child: Text(
                         cartProduct.product.name,
                         maxLines: 2,
@@ -73,7 +75,7 @@ class CartItem extends StatelessWidget {
                         IconButton(
                           color: colorScheme.primary,
                           onPressed: remove,
-                          iconSize: 28,
+                          iconSize: 25,
                           icon: const Icon(
                             Icons.favorite,
                             color: Colors.redAccent,
@@ -84,7 +86,7 @@ class CartItem extends StatelessWidget {
                         IconButton(
                           color: colorScheme.secondary,
                           onPressed: remove,
-                          iconSize: 28,
+                          iconSize: 25,
                           icon: const Icon(Icons.delete_outline),
                           padding: const EdgeInsets.all(3),
                           constraints: const BoxConstraints(),
@@ -112,16 +114,20 @@ class CartItem extends StatelessWidget {
                                 width: 30,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.horizontal(
-                                      left: Radius.circular(5)),
+                                      left: Radius.circular(
+                                          Constants.radiusMedium)),
                                   border: Border.all(
                                     color: colorScheme.secondaryContainer,
                                   ),
                                 ),
                                 child: InkWell(
                                   onTap: decrement,
-                                  child: const Icon(
-                                    Icons.remove,
-                                    size: 25,
+                                  child: const Padding(
+                                    padding: EdgeInsets.all(5.0),
+                                    child: Icon(
+                                      Icons.remove,
+                                      size: 20,
+                                    ),
                                   ),
                                 )),
                             Container(
@@ -132,7 +138,7 @@ class CartItem extends StatelessWidget {
                                   color: colorScheme.secondaryContainer,
                                 ),
                               ),
-                              height: 27,
+                              height: 32,
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 8.0),
                               child: Text(
@@ -146,16 +152,20 @@ class CartItem extends StatelessWidget {
                                 width: 30,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.horizontal(
-                                      right: Radius.circular(5)),
+                                      right: Radius.circular(
+                                          Constants.radiusMedium)),
                                   border: Border.all(
                                     color: colorScheme.secondaryContainer,
                                   ),
                                 ),
                                 child: InkWell(
                                   onTap: increment,
-                                  child: const Icon(
-                                    Icons.add,
-                                    size: 25,
+                                  child: const Padding(
+                                    padding: EdgeInsets.all(5.0),
+                                    child: Icon(
+                                      Icons.add,
+                                      size: 20,
+                                    ),
                                   ),
                                 ))
                           ],
