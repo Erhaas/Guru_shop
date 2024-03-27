@@ -5,6 +5,7 @@ class Input extends StatelessWidget {
     super.key,
     this.controller,
     this.onChanged,
+    this.onEditingComplete,
     this.placeholder = "Placeholder text",
     this.autofocus = false,
     this.focusNode,
@@ -16,6 +17,7 @@ class Input extends StatelessWidget {
 
   final TextEditingController? controller;
   final void Function(String)? onChanged;
+  final void Function()? onEditingComplete;
   final String? placeholder;
   final bool? autofocus;
   final int? maxLines;
@@ -27,9 +29,11 @@ class Input extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: controller,
       focusNode: focusNode,
       maxLines: maxLines,
       onChanged: onChanged,
+      onEditingComplete: onEditingComplete,
       style: Theme.of(context).textTheme.bodyMedium,
       decoration: InputDecoration(
         contentPadding:

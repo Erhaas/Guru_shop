@@ -2,21 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class CategoryItem extends StatelessWidget {
-  const CategoryItem({
-    super.key,
-    required this.label,
-    required this.image,
-  });
+  const CategoryItem(
+      {super.key, required this.label, required this.image, this.onTap});
 
   final String image;
   final String label;
-
+  final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
     return InkWell(
-        onTap: () => '',
+        onTap: onTap,
         child: Container(
           padding: EdgeInsets.symmetric(vertical: 3),
           child: Column(
