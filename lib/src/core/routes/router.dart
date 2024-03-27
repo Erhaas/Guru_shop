@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:guru_shop/src/core/routes/layouts/bottom_nav_wrapper.dart';
 import 'package:guru_shop/src/features/cart/cart.screen.dart';
+import 'package:guru_shop/src/features/cart/credit_card_screen.dart';
+import 'package:guru_shop/src/features/cart/payment_screen.dart';
+import 'package:guru_shop/src/features/cart/ship_screen.dart';
 import 'package:guru_shop/src/features/home/favorite_product_screen.dart';
 import 'package:guru_shop/src/features/home/home_screen.dart';
 import 'package:guru_shop/src/features/home/product_list_screen.dart';
@@ -38,6 +41,11 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: NotificationsRoute.page),
         AutoRoute(page: ActivityRoute.page),
         AutoRoute(page: FeedRoute.page),
-        AutoRoute(page: OfferRoute.page)
+        AutoRoute(page: OfferRoute.page),
+
+        // Cart sub screens
+        AutoRoute(page: ShipRoute.page),
+        AutoRoute(page: PaymentRoute.page),
+        AutoRoute(page: CreditCardRoute.page),
       ];
 }

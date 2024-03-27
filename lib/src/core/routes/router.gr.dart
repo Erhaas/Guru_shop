@@ -33,6 +33,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const CartScreen(),
       );
     },
+    CreditCardRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const CreditCardScreen(),
+      );
+    },
     FavoriteProductRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -67,6 +73,12 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const OfferScreen(),
+      );
+    },
+    PaymentRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const PaymentScreen(),
       );
     },
     ProductDetailsRoute.name: (routeData) {
@@ -129,6 +141,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const SettingScreen(),
       );
     },
+    ShipRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ShipScreen(),
+      );
+    },
   };
 }
 
@@ -170,6 +188,20 @@ class CartRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'CartRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [CreditCardScreen]
+class CreditCardRoute extends PageRouteInfo<void> {
+  const CreditCardRoute({List<PageRouteInfo>? children})
+      : super(
+          CreditCardRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'CreditCardRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
@@ -254,6 +286,20 @@ class OfferRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'OfferRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [PaymentScreen]
+class PaymentRoute extends PageRouteInfo<void> {
+  const PaymentRoute({List<PageRouteInfo>? children})
+      : super(
+          PaymentRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'PaymentRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
@@ -421,6 +467,20 @@ class SettingRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'SettingRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [ShipScreen]
+class ShipRoute extends PageRouteInfo<void> {
+  const ShipRoute({List<PageRouteInfo>? children})
+      : super(
+          ShipRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ShipRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

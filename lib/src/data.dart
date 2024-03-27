@@ -82,3 +82,10 @@ List<ProductModel> list_products = [
       name: 'Nike Air Zoom Pegasus 36 Miami',
       image: Assets.images.shoe4.path),
 ];
+
+List<Map<String, String>> listAddress = [
+  {"id": "1", "name": "Priscekila"},
+  {"id": "2", "name": "Home"},
+  {"id": "3", "name": "Work"},
+  {"id": "4", "name": "Hotel"},
+];

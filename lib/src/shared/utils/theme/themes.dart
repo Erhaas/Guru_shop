@@ -20,8 +20,11 @@ ThemeData lightThemeCustom() {
       appBarTheme: const AppBarTheme(
           backgroundColor: whiteColor,
           iconTheme: IconThemeData(color: neuralDark),
+          titleTextStyle: TextStyle(
+              fontSize: 16, fontWeight: FontWeight.w600, color: neuralDark),
           toolbarHeight: 80,
-          elevation: 1,
+          elevation: 0.4,
+          centerTitle: false,
           actionsIconTheme: IconThemeData(color: neuralGrey)),
       textTheme: textTheme(neuralDark),
       textSelectionTheme: const TextSelectionThemeData(cursorColor: neuralGrey),

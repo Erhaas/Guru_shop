@@ -221,7 +221,8 @@ class ProductDetailsScreen extends StatelessWidget {
                                     productModel.inCart(model.product)
                                         ? productModel
                                             .removeToCart(model.product)
-                                        : productModel.addToCart(model.product)
+                                        : productModel.addToCart(
+                                            product: model.product)
                                   },
                                 ),
                               ),

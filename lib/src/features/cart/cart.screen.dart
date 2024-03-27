@@ -1,6 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:guru_shop/src/core/viewmodels/login_viewmodel.dart';
+import 'package:guru_shop/src/core/routes/router.dart';
+import 'package:guru_shop/src/core/viewmodels/cart_viewmodel.dart';
+import 'package:guru_shop/src/core/viewmodels/product_viewmodel.dart';
 import 'package:guru_shop/src/data.dart';
 import 'package:guru_shop/src/features/baseview.dart';
 import 'package:guru_shop/src/models/cart_model.dart';
@@ -8,6 +10,7 @@ import 'package:guru_shop/src/shared/components/button.dart';
 import 'package:guru_shop/src/shared/components/cart_item.dart';
 import 'package:guru_shop/src/shared/components/input.dart';
 import 'package:guru_shop/src/shared/utils/constant.dart';
+import 'package:provider/provider.dart';
 
 @RoutePage()
 class CartScreen extends StatefulWidget {
@@ -30,9 +33,11 @@ class _CartScreenState extends State<CartScreen> {
     final _formKey = GlobalKey<FormState>();
     var size = MediaQuery.of(context).size;
     final double height = size.height;
+    final router = AutoRouter.of(context);
+    final productModel = Provider.of<ProductViewModel>(context);
 
-    return BaseView<LoginViewModel>(
-        builder: (BuildContext context, LoginViewModel model, Widget? child) =>
+    return BaseView<CartViewModel>(
+        builder: (BuildContext context, CartViewModel model, Widget? child) =>
             Scaffold(
               appBar: AppBar(
                 title: Text("Your Cart", style: textTheme.bodyLarge),
@@ -54,6 +59,13 @@ class _CartScreenState extends State<CartScreen> {
                           child: ListView(
                             children: [
                               SizedBox(height: Constants.edgeSpacing),
+                              if (productModel.cartList.isEmpty)
+                                Center(
+                                  child: Text(
+                                    "No products",
+                                    style: textTheme.bodySmall,
+                                  ),
+                                ),
                               GridView.count(
                                   shrinkWrap: true,
                                   physics: const ScrollPhysics(),
@@ -61,7 +73,8 @@ class _CartScreenState extends State<CartScreen> {
                                   childAspectRatio: 3.3,
                                   mainAxisSpacing: Constants.spacingY,
                                   children: [
-                                    for (CartModel cartProduct in listCart)
+                                    for (CartModel cartProduct
+                                        in productModel.cartList)
                                       CartItem(
                                           cartProduct: cartProduct,
                                           increment: () {
@@ -182,7 +195,9 @@ class _CartScreenState extends State<CartScreen> {
                                   text: "Check Out",
                                   bgColor: colorScheme.primary,
                                   color: colorScheme.onPrimary,
-                                  onPressed: () {}),
+                                  onPressed: () {
+                                    router.push(ShipRoute());
+                                  }),
                             ),
                           ],
                         ),

@@ -29,9 +29,10 @@ class Button extends StatelessWidget {
           padding: MaterialStateProperty.all<EdgeInsets>(
               const EdgeInsets.symmetric(vertical: 18, horizontal: 12)),
           backgroundColor: MaterialStateProperty.all<Color>(
-              bgColor ?? Theme.of(context).colorScheme.surface),
+              bgColor ?? Theme.of(context).colorScheme.primary),
           textStyle: MaterialStateProperty.all<TextStyle>(textStyle ??
-              TextStyle(color: color ?? Theme.of(context).colorScheme.primary)),
+              TextStyle(
+                  color: color ?? Theme.of(context).colorScheme.onPrimary)),
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
               RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(radius),

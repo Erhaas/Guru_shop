@@ -1,12 +1,13 @@
+import 'package:guru_shop/src/models/cart_model.dart';
 import 'package:guru_shop/src/models/product_model.dart';
 import 'package:guru_shop/src/core/viewmodels/base_viewmodel.dart';
 
 class ProductViewModel extends BaseViewModel {
   final List<ProductModel> _favoriteProducts = [];
-  final List<ProductModel> _cartProducts = [];
+  final List<CartModel> _cartProducts = [];
 
   List<ProductModel> get favoriteProducts => _favoriteProducts;
-  List<ProductModel> get cartList => _cartProducts;
+  List<CartModel> get cartList => _cartProducts;
 
   bool inFavorite(ProductModel product) {
     return _favoriteProducts.any((e) => e.id == e.id);
@@ -23,16 +24,35 @@ class ProductViewModel extends BaseViewModel {
   }
 
   bool inCart(ProductModel product) {
-    return _cartProducts.any((e) => e.id == e.id);
+    return _cartProducts.any((e) => e.product.id == product.id);
   }
 
-  void addToCart(ProductModel product) {
-    _cartProducts.add(product);
+  void addToCart({required ProductModel product, int quantity = 1}) {
+    if (inCart(product)) return;
+    CartModel cartFood = CartModel(product: product, quantity: quantity);
+    _cartProducts.add(cartFood);
+    notifyListeners();
     notifyListeners();
   }
 
   void removeToCart(ProductModel product) {
-    _cartProducts.removeWhere((e) => e.image == product.image);
+    _cartProducts.removeWhere((e) => e.product.image == product.image);
+    notifyListeners();
+    notifyListeners();
+  }
+
+  void incrementQuantity(int index) {
+    CartModel food = _cartProducts[index];
+    food.setQuantity = food.quantity += 1;
+    _cartProducts[index] = food;
+    notifyListeners();
+  }
+
+  void decrementQuantity(int index) {
+    CartModel food = _cartProducts[index];
+    if (food.quantity <= 1) return;
+    food.setQuantity = food.quantity -= 1;
+    _cartProducts[index] = food;
     notifyListeners();
   }
 }
