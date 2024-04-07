@@ -52,43 +52,40 @@ class _CartScreenState extends State<CartScreen> {
                       EdgeInsets.symmetric(horizontal: Constants.edgeSpacing),
                   child: Column(
                     children: [
-                      Material(
-                        elevation: .4,
-                        child: SizedBox(
-                          height: height * 6 / 12,
-                          child: ListView(
-                            children: [
-                              SizedBox(height: Constants.edgeSpacing),
-                              if (productModel.cartList.isEmpty)
-                                Center(
-                                  child: Text(
-                                    "No products",
-                                    style: textTheme.bodySmall,
-                                  ),
+                      SizedBox(
+                        height: height * 6 / 12,
+                        child: ListView(
+                          children: [
+                            SizedBox(height: Constants.edgeSpacing),
+                            if (productModel.cartList.isEmpty)
+                              Center(
+                                child: Text(
+                                  "No products",
+                                  style: textTheme.bodySmall,
                                 ),
-                              GridView.count(
-                                  shrinkWrap: true,
-                                  physics: const ScrollPhysics(),
-                                  crossAxisCount: 1,
-                                  childAspectRatio: 3.3,
-                                  mainAxisSpacing: Constants.spacingY,
-                                  children: [
-                                    for (CartModel cartProduct
-                                        in productModel.cartList)
-                                      CartItem(
-                                          cartProduct: cartProduct,
-                                          increment: () {
-                                            cartProduct.setQuantity =
-                                                cartProduct.quantity++;
-                                          },
-                                          decrement: () {
-                                            cartProduct.setQuantity =
-                                                cartProduct.quantity--;
-                                          },
-                                          remove: () {})
-                                  ])
-                            ],
-                          ),
+                              ),
+                            GridView.count(
+                                shrinkWrap: true,
+                                physics: const ScrollPhysics(),
+                                crossAxisCount: 1,
+                                childAspectRatio: 3.3,
+                                mainAxisSpacing: Constants.spacingY,
+                                children: [
+                                  for (CartModel cartProduct
+                                      in productModel.cartList)
+                                    CartItem(
+                                        cartProduct: cartProduct,
+                                        increment: () {
+                                          cartProduct.setQuantity =
+                                              cartProduct.quantity++;
+                                        },
+                                        decrement: () {
+                                          cartProduct.setQuantity =
+                                              cartProduct.quantity--;
+                                        },
+                                        remove: () {})
+                                ])
+                          ],
                         ),
                       ),
                       Padding(

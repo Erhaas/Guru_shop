@@ -23,10 +23,7 @@ class CartItem extends StatelessWidget {
 
     return Container(
       height: 100,
-      width: 250,
-      padding: const EdgeInsets.symmetric(
-        horizontal: 15,
-      ),
+      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(Constants.radiusMedium),
         border: Border.all(
@@ -49,7 +46,7 @@ class CartItem extends StatelessWidget {
           ),
           Expanded(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
@@ -57,7 +54,7 @@ class CartItem extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
-                      constraints: const BoxConstraints(maxWidth: 140),
+                      constraints: const BoxConstraints(maxWidth: 120),
                       child: Text(
                         cartProduct.product.name,
                         maxLines: 2,
@@ -69,109 +66,111 @@ class CartItem extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Flex(
-                      direction: Axis.horizontal,
-                      children: [
-                        IconButton(
-                          color: colorScheme.primary,
-                          onPressed: remove,
-                          iconSize: 25,
-                          icon: const Icon(
-                            Icons.favorite,
-                            color: Colors.redAccent,
+                    Container(
+                      child: Row(
+                        children: [
+                          SizedBox(
+                            width: 30,
+                            height: 30,
+                            child: IconButton(
+                                color: colorScheme.error,
+                                onPressed: remove,
+                                icon: const Icon(Icons.favorite),
+                                padding: EdgeInsets.zero,
+                                constraints: const BoxConstraints()),
                           ),
-                          padding: const EdgeInsets.all(3),
-                          constraints: const BoxConstraints(),
-                        ),
-                        IconButton(
-                          color: colorScheme.secondary,
-                          onPressed: remove,
-                          iconSize: 25,
-                          icon: const Icon(Icons.delete_outline),
-                          padding: const EdgeInsets.all(3),
-                          constraints: const BoxConstraints(),
-                        )
-                      ],
+                          SizedBox(
+                            width: 30,
+                            height: 30,
+                            child: IconButton(
+                              color: colorScheme.secondary,
+                              onPressed: remove,
+                              icon: const Icon(
+                                Icons.delete_outline,
+                              ),
+                              padding: EdgeInsets.zero,
+                              constraints: const BoxConstraints(),
+                            ),
+                          )
+                        ],
+                      ),
                     )
                   ],
                 ),
-                Padding(
-                    padding: const EdgeInsets.only(top: 14.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      cartProduct.product.price,
+                      style: textThemes.bodyLarge!.copyWith(
+                          fontWeight: FontWeight.w600,
+                          color: colorScheme.primary),
+                    ),
+                    Flex(
+                      direction: Axis.horizontal,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Text(
-                          cartProduct.product.price,
-                          style: textThemes.bodyLarge!.copyWith(
-                              fontWeight: FontWeight.w600,
-                              color: colorScheme.primary),
-                        ),
-                        Flex(
-                          direction: Axis.horizontal,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Container(
-                                width: 30,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.horizontal(
-                                      left: Radius.circular(
-                                          Constants.radiusMedium)),
-                                  border: Border.all(
-                                    color: colorScheme.secondaryContainer,
-                                  ),
-                                ),
-                                child: InkWell(
-                                  onTap: decrement,
-                                  child: const Padding(
-                                    padding: EdgeInsets.all(5.0),
-                                    child: Icon(
-                                      Icons.remove,
-                                      size: 20,
-                                    ),
-                                  ),
-                                )),
-                            Container(
-                              alignment: Alignment.center,
-                              decoration: BoxDecoration(
+                        Container(
+                            width: 30,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.horizontal(
+                                  left:
+                                      Radius.circular(Constants.radiusMedium)),
+                              border: Border.all(
                                 color: colorScheme.secondaryContainer,
-                                border: Border.all(
-                                  color: colorScheme.secondaryContainer,
-                                ),
-                              ),
-                              height: 32,
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 8.0),
-                              child: Text(
-                                '${cartProduct.quantity}',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w500,
-                                    color: colorScheme.secondary),
                               ),
                             ),
-                            Container(
-                                width: 30,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.horizontal(
-                                      right: Radius.circular(
-                                          Constants.radiusMedium)),
-                                  border: Border.all(
-                                    color: colorScheme.secondaryContainer,
-                                  ),
+                            child: InkWell(
+                              onTap: decrement,
+                              child: const Padding(
+                                padding: EdgeInsets.all(5.0),
+                                child: Icon(
+                                  Icons.remove,
+                                  size: 20,
                                 ),
-                                child: InkWell(
-                                  onTap: increment,
-                                  child: const Padding(
-                                    padding: EdgeInsets.all(5.0),
-                                    child: Icon(
-                                      Icons.add,
-                                      size: 20,
-                                    ),
-                                  ),
-                                ))
-                          ],
+                              ),
+                            )),
+                        Container(
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            color: colorScheme.secondaryContainer,
+                            border: Border.all(
+                              color: colorScheme.secondaryContainer,
+                            ),
+                          ),
+                          height: 32,
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                          child: Text(
+                            '${cartProduct.quantity}',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w500,
+                                color: colorScheme.secondary),
+                          ),
                         ),
+                        Container(
+                            width: 30,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.horizontal(
+                                  right:
+                                      Radius.circular(Constants.radiusMedium)),
+                              border: Border.all(
+                                color: colorScheme.secondaryContainer,
+                              ),
+                            ),
+                            child: InkWell(
+                              onTap: increment,
+                              child: const Padding(
+                                padding: EdgeInsets.all(5.0),
+                                child: Icon(
+                                  Icons.add,
+                                  size: 20,
+                                ),
+                              ),
+                            ))
                       ],
-                    )),
+                    ),
+                  ],
+                ),
               ],
             ),
           ),
